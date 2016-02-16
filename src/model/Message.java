@@ -2,6 +2,7 @@ package model;
 
 /**
  * Class representing a generic message that can be sent or received.
+
  */
 public class Message {
 
