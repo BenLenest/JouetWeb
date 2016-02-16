@@ -1,34 +1,50 @@
 package model;
 
-import model.enums.HeaderFields;
+import model.enums.HeaderRequest;
+import model.enums.HeaderResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Class representing the header of a message with it's possible fields.
- * @see HeaderFields
+ * @see HeaderRequest
+ * @see HeaderResponse
+ *
+ * /!\ Ben : je n'ai pas réussi à faire une liste générique avec HeaderRequest OU HeaderResponse, donc ya 2 listes...
+ *
  */
 public class Header {
 
     /* ATTRIBUTES ========================================================== */
 
-    private List<HeaderFields> fields;
+    private List<HeaderRequest> requestFields;
+    private List<HeaderResponse> responseFields;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Header(List<HeaderFields> fields) {
-        this.fields = fields;
+    public Header(List<HeaderRequest> requestFields, List<HeaderResponse> responseFields) {
+        this.requestFields = requestFields;
+        this.responseFields = responseFields;
     }
 
     /* SETTERS ============================================================= */
 
-    public void setFields(List<HeaderFields> fields) {
-        this.fields = fields;
+    public void setRequestFields(List<HeaderRequest> requestFields) {
+        this.requestFields = requestFields;
+    }
+
+    public void setResponseFields(List<HeaderResponse> responseFields) {
+        this.responseFields = responseFields;
     }
 
     /* GETTERS ============================================================= */
 
-    public List<HeaderFields> getFields() {
-        return fields;
+    public List<HeaderRequest> getRequestFields() {
+        return requestFields;
+    }
+
+    public List<HeaderResponse> getResponseFields() {
+        return responseFields;
     }
 }

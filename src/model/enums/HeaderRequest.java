@@ -1,10 +1,11 @@
 package model.enums;
 
 /**
- * Class enumerating all the possible fields of a Header.
+ * Class enumerating all the possible fields of a request header.
  * To use a custom header, use the constructor.
+ * Common non-standard fields are not taken in consideration.
  */
-public enum HeaderFields {
+public enum HeaderRequest {
 
     /* CONSTANTS ========================================================== */
 
@@ -30,7 +31,7 @@ public enum HeaderFields {
 
     /* CONSTRUCTOR ========================================================== */
 
-    HeaderFields(String name, String value) {
+    HeaderRequest(String name, String value) {
         this.name = name;
         this.value = value;
     }
