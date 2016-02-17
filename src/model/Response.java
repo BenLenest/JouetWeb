@@ -1,5 +1,6 @@
 package model;
 
+import model.enums.ContentType;
 import model.enums.Method;
 
 import java.util.List;
@@ -23,24 +24,24 @@ public class Response extends Message {
 
     /* ATTRIBUTES ========================================================== */
 
-    private String method;
+    private int statusCode;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Response(int statusCode, String url, Map<String, String> header, String method) {
-        super(statusCode, url, header);
-        this.method = method;
+    public Response(int statusCode, String url, Map<String, String> header, ContentType contentType, Content content, int statusCode1) {
+        super(url, header, contentType, content);
+        statusCode = statusCode1;
     }
 
-    /* SETTERS ============================================================= */
+    /* SETTERS ========================================================== */
 
-    public void setMethod(String method) {
-        this.method = method;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
-    /* GETTERS ============================================================= */
+    /* GETTERS ========================================================== */
 
-    public String getMethod() {
-        return method;
+    public int getStatusCode() {
+        return statusCode;
     }
 }

@@ -15,7 +15,7 @@ public class Main {
         Server server = new Server(port);
 
         // Start listening
-        System.out.println("#2 - Server starts listening on port " + port);
+        System.out.println("#2 - Server starts listening on port " + port + " :\n");
         server.startListening();
     }
 }

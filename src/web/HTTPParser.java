@@ -1,12 +1,13 @@
 package web;
 
+import com.oracle.javafx.jmx.json.JSONDocument;
+import model.Content;
 import model.Request;
-import model.enums.HeaderRequest;
+import model.enums.ContentType;
 import model.enums.Method;
+import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,38 +15,79 @@ import java.util.Map;
  */
 public class HTTPParser {
 
+    /* CONSTANTS ========================================================== */
+
     public final static String HOST = "Host";
+    public final static String CONTENT_TYPE = "Content-Type";
+    public final static String CONTENT_LENGTH = "Content-Length";
+
+    /* PUBLIC STATIC METHODS  ============================================== */
 
     public static Request parseRequest(String input) {
 
-        String[] lines;
-        Method method;
-        Map<String, String> headers;
+        // attributes
+        String[] lines = input.split(System.getProperty("line.separator"));
+        Map<String, String> headers = parseHeaderFields(lines);
+
+        String query = null;
+        ContentType contentType = null;
+        Content content = null;
+        Method method = null;
         String host = null;
+        int contentLength = 0;
 
-        // split the request to separate each line
-        lines = input.split(System.getProperty("line.separator"));
-
-        // parse the request method
+        // parsing : method, query, host and content length
         method = Method.findMethodByValue(lines[0].split(" ")[0]);
+        query = lines[0].split(" ")[1];
+        if (headers.containsKey(HOST)) host = headers.get(HOST);
+        if (headers.containsKey(CONTENT_LENGTH)) contentLength = Integer.parseInt(headers.get(CONTENT_LENGTH));
 
-        // parse the header
-        headers = new HashMap<>();
-        String header, value;
-        for (String line : lines) {
-            header = line.split(":")[0];
-            value = line.split(":")[1];
-            if (header != null && !header.contains(" ")) {
-                headers.put(header, value);
+        // parsing : content type and content
+        if (headers.containsKey(CONTENT_TYPE)) {
+            String type = headers.get(CONTENT_TYPE);
+            if (type.contains(ContentType.TEXT_PLAIN.getValue())) {
+                contentType = ContentType.TEXT_PLAIN;
+                content = new Content(getContentArray(lines), null, null);
+            }
+            else if (type.contains(ContentType.TEXT_HTML.getValue())) {
+                contentType = ContentType.TEXT_HTML;
+                content = new Content(null, getContentArray(lines), null);
+            }
+            else if (type.contains(ContentType.APPLICATION_JSON.getValue())) {
+                contentType = ContentType.APPLICATION_JSON;
+                content = new Content(null, null, parseApplicationJson(getContentArray(lines)));
             }
         }
 
-        // parse the host
-        if (headers.keySet().contains(HOST)) {
-            host = headers.get(HOST);
-        }
-
-        return new Request(0, "url", headers, method, host);
+        // return the Request object
+        return new Request(query, headers, contentType, content, method, host, 0);
     }
 
+    private static String getContentArray(String[] lines) {
+        int index = 0;
+        for (int i = 0 ; i < lines.length ; i++) {
+            if (lines[i].equals("")) {
+                index = i+1;
+                break;
+            }
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = index ; i < lines.length; i++) {
+            builder.append(lines[i]);
+        }
+        return builder.toString();
+    }
+
+    private static Map<String, String> parseHeaderFields(String[] lines) {
+        Map<String, String> headers = new HashMap<>();
+        for (int i = 1 ; i < lines.length ; i++) {
+            if (lines[i].equals("")) break;
+            headers.put(lines[i].split(": ")[0], lines[i].split(": ")[1]);
+        }
+        return headers;
+    }
+
+    private static JSONObject parseApplicationJson(String contentText) {
+        return new JSONObject(contentText);
+    }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import model.enums.ContentType;
+
 import java.util.List;
 import java.util.Map;
 
@@ -11,23 +13,21 @@ public class Message {
 
     /* ATTRIBUTES ========================================================== */
 
-    private int statusCode;
     private String url;
     private Map<String, String> header;
+    private ContentType contentType;
+    private Content content;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Message(int statusCode, String url, Map<String, String> header) {
-        this.statusCode = statusCode;
+    public Message(String url, Map<String, String> header, ContentType contentType, Content content) {
         this.url = url;
         this.header = header;
+        this.contentType = contentType;
+        this.content = content;
     }
 
     /* SETTERS ============================================================= */
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
 
     public void setUrl(String url) {
         this.url = url;
@@ -37,11 +37,15 @@ public class Message {
         this.header = header;
     }
 
-    /* GETTERS ============================================================= */
-
-    public int getStatusCode() {
-        return statusCode;
+    public void setContentType(ContentType contentType) {
+        this.contentType = contentType;
     }
+
+    public void setContent(Content content) {
+        this.content = content;
+    }
+
+    /* GETTERS ============================================================= */
 
     public String getUrl() {
         return url;
@@ -49,5 +53,13 @@ public class Message {
 
     public Map<String, String> getHeader() {
         return header;
+    }
+
+    public ContentType getContentType() {
+        return contentType;
+    }
+
+    public Content getContent() {
+        return content;
     }
 }
