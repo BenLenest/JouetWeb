@@ -42,6 +42,7 @@ public class Server {
                 builder.append(inputLine + "\n");
                 if (inputLine.equals("")) {
                     request = HTTPParser.parseRequest(builder.toString());
+                    System.out.println(builder.toString());
                     builder.delete(0, builder.length());
                 }
             }

@@ -20,24 +20,24 @@ public class Response extends Message {
 
     /* ATTRIBUTES ========================================================== */
 
-    private String method;
+    private String content;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Response(int statusCode, String url, Header header, String method) {
+    public Response(int statusCode, String url, Header header, String content) {
         super(statusCode, url, header);
-        this.method = method;
+        this.content = content;
     }
 
     /* SETTERS ============================================================= */
 
-    public void setMethod(String method) {
-        this.method = method;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     /* GETTERS ============================================================= */
 
-    public String getMethod() {
-        return method;
+    public String getContent() {
+        return content;
     }
 }

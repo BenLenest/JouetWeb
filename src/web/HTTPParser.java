@@ -2,6 +2,7 @@ package web;
 
 import model.Header;
 import model.Request;
+import model.Response;
 import model.enums.HeaderRequest;
 import model.enums.Method;
 
@@ -32,6 +33,12 @@ public class HTTPParser {
         Header header = new Header(headers, null);
 
         return new Request(0, "url", header, method, "host");
+    }
+
+    public static StringBuilder buildResponse(Response resp){
+        StringBuilder response = new StringBuilder("HTTP/1.1 "+resp.getStatusCode()+" OK\n");
+        //response.append()
+        return response;
     }
 
 }
