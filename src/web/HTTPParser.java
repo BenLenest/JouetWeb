@@ -1,9 +1,9 @@
 package web;
 
-import com.oracle.javafx.jmx.json.JSONDocument;
 import model.Content;
 import model.Request;
 import model.enums.ContentType;
+import model.Response;
 import model.enums.Method;
 import org.json.JSONObject;
 
@@ -89,5 +89,11 @@ public class HTTPParser {
 
     private static JSONObject parseApplicationJson(String contentText) {
         return new JSONObject(contentText);
+    }
+
+    public static StringBuilder buildResponse(Response resp){
+        StringBuilder response = new StringBuilder("HTTP/1.1 "+resp.getStatusCode()+" OK\n");
+        //response.append()
+        return response;
     }
 }
