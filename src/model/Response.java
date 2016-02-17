@@ -2,6 +2,9 @@ package model;
 
 import model.enums.Method;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Class representing a Response with it's method.
  * @see Method
@@ -24,7 +27,7 @@ public class Response extends Message {
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Response(int statusCode, String url, Header header, String method) {
+    public Response(int statusCode, String url, Map<String, String> header, String method) {
         super(statusCode, url, header);
         this.method = method;
     }

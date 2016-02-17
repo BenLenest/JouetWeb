@@ -19,13 +19,17 @@ public class Server {
 
     private int port;
     private Socket clientSocket;
-    private Request request;
-    private Response response;
 
     /* CONSTRUCTOR ========================================================== */
 
     public Server(int port) {
         this.port = port;
+    }
+
+    /* PRIVATE METHODS ======================================================= */
+
+    private void handleRequest(Request request) {
+
     }
 
     /* PUBLIC METHODS ======================================================= */
@@ -41,7 +45,8 @@ public class Server {
             while ((inputLine = in.readLine()) != null) {
                 builder.append(inputLine + "\n");
                 if (inputLine.equals("")) {
-                    request = HTTPParser.parseRequest(builder.toString());
+                    handleRequest(HTTPParser.parseRequest(builder.toString()));
+                    System.out.println(builder.toString());
                     builder.delete(0, builder.length());
                 }
             }

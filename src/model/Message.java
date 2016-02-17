@@ -1,5 +1,8 @@
 package model;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Class representing a generic message that can be sent or received.
 
@@ -10,11 +13,11 @@ public class Message {
 
     private int statusCode;
     private String url;
-    private Header header;
+    private Map<String, String> header;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Message(int statusCode, String url, Header header) {
+    public Message(int statusCode, String url, Map<String, String> header) {
         this.statusCode = statusCode;
         this.url = url;
         this.header = header;
@@ -30,7 +33,7 @@ public class Message {
         this.url = url;
     }
 
-    public void setHeader(Header header) {
+    public void setHeader(Map<String, String> header) {
         this.header = header;
     }
 
@@ -44,7 +47,7 @@ public class Message {
         return url;
     }
 
-    public Header getHeader() {
+    public Map<String, String> getHeader() {
         return header;
     }
 }

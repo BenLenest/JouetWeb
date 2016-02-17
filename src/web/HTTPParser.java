@@ -1,37 +1,51 @@
 package web;
 
-import model.Header;
 import model.Request;
 import model.enums.HeaderRequest;
 import model.enums.Method;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * HTML Parser to parse HTTP Requests into Java objects
  */
 public class HTTPParser {
 
+    public final static String HOST = "Host";
+
     public static Request parseRequest(String input) {
 
+        String[] lines;
+        Method method;
+        Map<String, String> headers;
+        String host = null;
+
         // split the request to separate each line
-        String[] lines = input.split(System.getProperty("line.separator"));
+        lines = input.split(System.getProperty("line.separator"));
 
         // parse the request method
-        Method method = Method.findMethodByValue(lines[0].split(" ")[0]);
+        method = Method.findMethodByValue(lines[0].split(" ")[0]);
 
         // parse the header
-        List<HeaderRequest> headers = new ArrayList<>();
+        headers = new HashMap<>();
+        String header, value;
         for (String line : lines) {
-            HeaderRequest header;
-            if ((header = HeaderRequest.findHeaderdByValue(line.split(":")[0])) != null) {
-                headers.add(header);
+            header = line.split(":")[0];
+            value = line.split(":")[1];
+            if (header != null && !header.contains(" ")) {
+                headers.put(header, value);
             }
         }
-        Header header = new Header(headers, null);
 
-        return new Request(0, "url", header, method, "host");
+        // parse the host
+        if (headers.keySet().contains(HOST)) {
+            host = headers.get(HOST);
+        }
+
+        return new Request(0, "url", headers, method, host);
     }
 
 }
