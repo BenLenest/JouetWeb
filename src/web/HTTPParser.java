@@ -5,10 +5,7 @@ import model.Response;
 import model.enums.HeaderRequest;
 import model.enums.Method;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * HTML Parser to parse HTTP Requests into Java objects
@@ -49,10 +46,19 @@ public class HTTPParser {
         return new Request(0, "url", headers, method, host);
     }
 
-    public static StringBuilder buildResponse(Response resp){
+    public static String buildResponse(Response resp){
         StringBuilder response = new StringBuilder("HTTP/1.1 "+resp.getStatusCode()+" OK\n");
-        //response.append()
-        return response;
+        Map map = resp.getHeader();
+        Set cles = map.keySet();
+        Iterator it = cles.iterator();
+        while (it.hasNext()){
+            String cle = (String) it.next();
+            String valeur = (String) map.get(cle);
+            response.append(cle).append(":").append(valeur).append("\n");
+        }
+        response.append(resp.getContent());
+
+        return response.toString();
     }
 
 }

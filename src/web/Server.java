@@ -28,8 +28,10 @@ public class Server {
 
     /* PRIVATE METHODS ======================================================= */
 
-    private void handleRequest(Request request) {
-
+    private Response handleRequest(Request request) {
+        StringBuilder sb = new StringBuilder("<html>\n");
+        sb.append("<body>\n<h1>Hello, World!</h1>\n</body>\n</html>");
+        return new Response(request.getStatusCode(), request.getUrl(), request.getHeader(), sb.toString());
     }
 
     /* PUBLIC METHODS ======================================================= */
@@ -41,15 +43,18 @@ public class Server {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String inputLine;
             StringBuilder builder = new StringBuilder();
+            Response resp = null;
 
             while ((inputLine = in.readLine()) != null) {
                 builder.append(inputLine + "\n");
                 if (inputLine.equals("")) {
-                    handleRequest(HTTPParser.parseRequest(builder.toString()));
-                    System.out.println(builder.toString());
+                    resp = handleRequest(HTTPParser.parseRequest(builder.toString()));
+                    //System.out.println(builder.toString());
+                    System.out.println(HTTPParser.buildResponse(resp));
                     builder.delete(0, builder.length());
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
