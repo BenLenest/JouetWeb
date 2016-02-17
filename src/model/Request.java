@@ -2,6 +2,9 @@ package model;
 
 import model.enums.Method;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Class representing a request with it's method name.
  * @see Method
@@ -28,7 +31,7 @@ public class Request extends Message {
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Request(int statusCode, String url, Header header, Method method, String host) {
+    public Request(int statusCode, String url, Map<String, String> header, Method method, String host) {
         super(statusCode, url, header);
         this.method = method;
         this.host = host;
