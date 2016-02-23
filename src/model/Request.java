@@ -1,5 +1,6 @@
 package model;
 
+import model.enums.ContentType;
 import model.enums.Method;
 
 import java.util.List;
@@ -28,13 +29,15 @@ public class Request extends Message {
 
     private Method method;
     private String host;
+    private int port;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Request(int statusCode, String url, Map<String, String> header, Method method, String host) {
-        super(statusCode, url, header);
+    public Request(String url, Map<String, String> header, ContentType contentType, Content content, Method method, String host, int port) {
+        super(url, header, contentType, content);
         this.method = method;
         this.host = host;
+        this.port = port;
     }
 
     /* SETTERS ============================================================= */
@@ -47,6 +50,10 @@ public class Request extends Message {
         this.host = host;
     }
 
+    public void setPort(int port) {
+        this.port = port;
+    }
+
     /* GETTERS ============================================================= */
 
     public Method getMethod() {
@@ -55,5 +62,9 @@ public class Request extends Message {
 
     public String getHost() {
         return host;
+    }
+
+    public int getPort() {
+        return port;
     }
 }
