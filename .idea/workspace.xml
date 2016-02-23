@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba4e3dc7-05c3-445f-abc3-3398349847a2" name="Default" comment="Merge branch 'master' of https://github.com/BenLenest/JouetWeb&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/JouetWeb/model/Response.class&#10;#&#9;out/production/JouetWeb/web/HTTPParser.class&#10;#&#9;out/production/JouetWeb/web/Server.class&#10;#&#9;src/model/Response.java&#10;#&#9;src/web/HTTPParser.java&#10;#&#9;src/web/Server.java&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/URL.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tools/JarLoader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/Utils.java" afterPath="$PROJECT_DIR$/src/tools/Utils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/Client.java" afterPath="$PROJECT_DIR$/src/web/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/HTTPBuilder.java" afterPath="$PROJECT_DIR$/src/web/HTTPBuilder.java" />
     </list>
@@ -43,18 +39,12 @@
       <file leaf-file-name="HTTPBuilder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/web/HTTPBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5789474">
-              <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.2703252">
+              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
                 <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
               </folding>
@@ -91,9 +81,9 @@
         <entry file="file://$PROJECT_DIR$/src/web/Client.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
+              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding>
-                <element signature="method#Client#0;class#Client#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,10 +131,10 @@
         <option value="$PROJECT_DIR$/src/model/Response.java" />
         <option value="$PROJECT_DIR$/src/model/Message.java" />
         <option value="$PROJECT_DIR$/src/model/URL.java" />
-        <option value="$PROJECT_DIR$/src/web/Client.java" />
         <option value="$PROJECT_DIR$/src/tools/JarLoader.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/web/HTTPBuilder.java" />
+        <option value="$PROJECT_DIR$/src/web/Client.java" />
       </list>
     </option>
   </component>
@@ -648,7 +638,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15180723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48554218" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.760241" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37349397" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1795422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -708,12 +698,6 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -771,7 +755,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="54" />
           <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -802,12 +786,6 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -838,7 +816,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
           <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -848,7 +826,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="89" column="67" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
           <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -879,12 +857,6 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -935,12 +907,6 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -1002,12 +968,6 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -1138,26 +1098,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
-          <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11221945">
@@ -1174,20 +1114,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/web/HTTPBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5789474">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2703252">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
