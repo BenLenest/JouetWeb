@@ -29,8 +29,10 @@ public class HTTPBuilder {
     public static Request parseRequest(String input) {
 
         // attributes
-        System.out.println(input);
         String[] lines = input.split("\n");
+        for(int i=0; i < lines.length; i++){
+            System.out.println(i + " : " + lines[i]);
+        }
         Map<String, String> headers = parseHeaderFields(lines);
 
         String query;
@@ -91,25 +93,27 @@ public class HTTPBuilder {
             header.put("Connection", "Closed");
 
             if(url.equals("/echo")){
-                switch(type){
-                    case Utils.TEXT_HTML:
-                        content.append(HTTPBuilder.buildHTMLContent(request));
-                        size = HTTPBuilder.buildHTMLContent(request).length();
-                        break;
-                    case Utils.APPLICATION_JSON:
-                        content.append(HTTPBuilder.buildJSONContent(request));
-                        size = HTTPBuilder.buildJSONContent(request).length();
-                        break;
-                    case Utils.TEXT_PLAIN:
-                        content.append(HTTPBuilder.buildPLAINContent(request));
-                        size = HTTPBuilder.buildPLAINContent(request).length();
-                        break;
+                if(type.contains(Utils.TEXT_HTML)){
+                    content.append(HTTPBuilder.buildHTMLContent(request));
+                    size = HTTPBuilder.buildHTMLContent(request).length();
+                    type = Utils.TEXT_HTML;
+                }else if(type.contains(Utils.APPLICATION_JSON)){
+                    content.append(HTTPBuilder.buildJSONContent(request));
+                    size = HTTPBuilder.buildJSONContent(request).length();
+                    type = Utils.APPLICATION_JSON;
+                }else if(type.contains(Utils.TEXT_PLAIN)){
+                    content.append(HTTPBuilder.buildPLAINContent(request));
+                    size = HTTPBuilder.buildPLAINContent(request).length();
+                    type = Utils.TEXT_PLAIN;
                 }
             }else{
                 for (String line : Files.readAllLines(Paths.get("."+url))) {
                     content.append(line);
                     size += line.length();
                 }
+                if(type.contains(Utils.TEXT_HTML)) type = Utils.TEXT_HTML;
+                else if(type.contains(Utils.APPLICATION_JSON)) type = Utils.APPLICATION_JSON;
+                else if(type.contains(Utils.TEXT_PLAIN)) type = Utils.TEXT_PLAIN;
             }
 
             header.put(Utils.CONTENT_LENGTH, Integer.toString(size));
@@ -169,7 +173,7 @@ public class HTTPBuilder {
     }
 
     private static String buildHTMLContent(Request req){
-        StringBuilder html = new StringBuilder("<!DOCTYPE html><html><head><title>My project</title><meta charset='utf-8'></head><body>");
+        StringBuilder html = new StringBuilder("<!DOCTYPE html><html><head><title>My project</title><meta charset='utf-8'></meta></head><body>");
         html.append("<h1>Entête de la requête</h1><p>")
                 .append(req.getMethod())
                 .append(" ")
