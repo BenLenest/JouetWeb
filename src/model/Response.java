@@ -2,7 +2,6 @@ package model;
 
 import model.enums.Method;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,36 +10,36 @@ import java.util.Map;
  *
  * Response example :
  *
- * HTTP/1.0 200 OK
- * Date: Fri, 31 Dec 1999 23:59:59 GMT
- * web.Server: Apache/0.8.4
- * Content-Type: text/html
- * Content-Length: 59
- * Expires: Sat, 01 Jan 2000 00:59:59 GMT
- * Last-modified: Fri, 09 Aug 1996 14:21:40 GMT
+ *   HTTP/1.1 200 OK
+ *   Date: Mon, 27 Jul 2009 12:28:53 GMT
+ *   Server: Apache/2.2.14 (Win32)
+ *   Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
+ *   Content-Length: 88
+ *   Content-Type: text/html
+ *   Connection: Closed
  */
 public class Response extends Message {
 
     /* ATTRIBUTES ========================================================== */
 
-    private String content;
+    private int statusCode;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Response(int statusCode, String url, Map<String, String> header, String content) {
-        super(statusCode, url, header);
-        this.content = content;
+    public Response(int statusCode, String url, Map<String, String> header, String contentType, String content) {
+        super(url, header, contentType, content);
+        this.statusCode = statusCode;
     }
 
-    /* SETTERS ============================================================= */
+    /* SETTERS ========================================================== */
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
-    /* GETTERS ============================================================= */
+    /* GETTERS ========================================================== */
 
-    public String getContent() {
-        return content;
+    public int getStatusCode() {
+        return statusCode;
     }
 }

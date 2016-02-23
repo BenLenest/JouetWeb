@@ -1,8 +1,5 @@
 package model;
 
-import model.enums.ContentType;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,12 +12,12 @@ public class Message {
 
     private String url;
     private Map<String, String> header;
-    private ContentType contentType;
-    private Content content;
+    private String contentType;
+    private String content;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Message(String url, Map<String, String> header, ContentType contentType, Content content) {
+    public Message(String url, Map<String, String> header, String contentType, String content) {
         this.url = url;
         this.header = header;
         this.contentType = contentType;
@@ -37,11 +34,11 @@ public class Message {
         this.header = header;
     }
 
-    public void setContentType(ContentType contentType) {
+    public void setContentType(String contentType) {
         this.contentType = contentType;
     }
 
-    public void setContent(Content content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -55,11 +52,11 @@ public class Message {
         return header;
     }
 
-    public ContentType getContentType() {
+    public String getContentType() {
         return contentType;
     }
 
-    public Content getContent() {
+    public String getContent() {
         return content;
     }
 }
