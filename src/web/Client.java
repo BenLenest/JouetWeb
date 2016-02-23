@@ -2,16 +2,15 @@ package web;
 
 import model.Request;
 import model.Response;
-import model.Utils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
 
 /**
- * Created by Benjamin on 18/02/2016.
+ * Implementation of a client socket.
  */
 public class Client extends Thread {
 
@@ -27,7 +26,7 @@ public class Client extends Thread {
         this.clientSocket = cliS;
     }
 
-    /* PUBLIC METHODS ======================================================= */
+    /* PUBLIC METHODS ====================================================== */
 
     @Override
     public void run() {

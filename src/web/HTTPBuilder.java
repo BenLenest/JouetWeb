@@ -1,13 +1,16 @@
 package web;
 
 import model.Request;
-import model.Utils;
+import tools.JarLoader;
+import tools.Utils;
 import model.Response;
 import model.enums.Method;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -17,6 +20,8 @@ import java.util.*;
  */
 public class HTTPBuilder {
 
+    private static final String BASE_URL = "/myproject/hello.html";
+
     /* PUBLIC STATIC METHODS  ============================================== */
 
     /**
@@ -25,7 +30,6 @@ public class HTTPBuilder {
      * @return Request
      * String to object Request
      */
-
     public static Request parseRequest(String input) {
 
         // attributes
@@ -43,7 +47,7 @@ public class HTTPBuilder {
         // parsing : method, query, protocol, host and content length
         String[] head = lines[0].split(" ");
         method = Method.findMethodByValue(head[0]);
-        query = head[1];
+        query = (head[1].equals("/") ? BASE_URL : head[1]);     //TODO: on devrait pas rediriger vers l'index (genre "http://truc.com/index.html") ?
         protocol = head[2];
         if (headers.containsKey(Utils.HOST)) host = headers.get(Utils.HOST);
 
@@ -62,6 +66,21 @@ public class HTTPBuilder {
             content = getContentArray(lines);
         }
 
+        /* Exemple d'appel de méthode dans un jar
+        try {
+            URLClassLoader classLoader = JarLoader.getInstance().getClassLoader();
+            Class classToLoad = Class.forName("Controller", true, classLoader);
+            java.lang.reflect.Method methodToUse = classToLoad.getDeclaredMethod("brioche");
+            Object instance = classToLoad.newInstance();
+            Object result = methodToUse.invoke(instance);
+            System.out.println(result.toString());
+        }
+        catch (NoSuchMethodException e) { e.printStackTrace(); }
+        catch (InstantiationException e) { e.printStackTrace(); }
+        catch (IllegalAccessException e) { e.printStackTrace(); }
+        catch (ClassNotFoundException e) { e.printStackTrace(); }
+        catch (InvocationTargetException e) { e.printStackTrace(); }*/
+
         // return the Request object
         return new Request(query, headers, contentType, content, method, host, 0, protocol);
     }
@@ -73,7 +92,6 @@ public class HTTPBuilder {
      * @throws IOException
      * Generate response after receive a request
      */
-
     public static Response handleRequest(Request request) throws IOException {
         if (request != null) {
             Map<String, String> headers = request.getHeader();
@@ -128,7 +146,6 @@ public class HTTPBuilder {
      * @return String
      * Response to String
      */
-
     public static String buildResponse(Response resp){
         StringBuilder response = new StringBuilder("HTTP/1.1 "+resp.getStatusCode()+" OK\r\n");
         Set set = resp.getHeader().entrySet();
