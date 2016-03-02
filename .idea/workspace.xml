@@ -2,9 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba4e3dc7-05c3-445f-abc3-3398349847a2" name="Default" comment="Merge branch 'master' of https://github.com/BenLenest/JouetWeb&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/JouetWeb/model/Response.class&#10;#&#9;out/production/JouetWeb/web/HTTPParser.class&#10;#&#9;out/production/JouetWeb/web/Server.class&#10;#&#9;src/model/Response.java&#10;#&#9;src/web/HTTPParser.java&#10;#&#9;src/web/Server.java&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/RequestDispatcher.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/JouetWeb/model/URL.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/JouetWeb/model/enums/Method.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/URL.java" afterPath="$PROJECT_DIR$/src/model/CustomURL.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/model/enums/Method.java" afterPath="$PROJECT_DIR$/src/model/enums/EnumMethod.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/Main.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/model/Message.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/model/Message.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/model/Request.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/model/Request.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/model/Response.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/model/Response.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/tools/JarLoader.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/tools/JarLoader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/web/Client.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/web/Client.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/web/HTTPBuilder.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/web/HTTPBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JouetWeb/web/Server.class" afterPath="$PROJECT_DIR$/out/production/JouetWeb/web/Server.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/service1.jar" afterPath="$PROJECT_DIR$/services/service1.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JouetWeb.iml" afterPath="$PROJECT_DIR$/JouetWeb.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Message.java" afterPath="$PROJECT_DIR$/src/model/Message.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Request.java" afterPath="$PROJECT_DIR$/src/model/Request.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Response.java" afterPath="$PROJECT_DIR$/src/model/Response.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/JarLoader.java" afterPath="$PROJECT_DIR$/src/tools/JarLoader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/Client.java" afterPath="$PROJECT_DIR$/src/web/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/HTTPBuilder.java" afterPath="$PROJECT_DIR$/src/web/HTTPBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/Server.java" afterPath="$PROJECT_DIR$/src/web/Server.java" />
     </list>
     <ignored path="JouetWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,43 +57,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPBuilder.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/web/HTTPBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2703252">
-              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
-                <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JarLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tools/JarLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#JarLoader#0" expanded="false" />
-                <element signature="method#initializeClassLoader#0;class#JarLoader#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/web/Server.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="79" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,10 +70,56 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/web/Client.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.703704">
+              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+              <folding>
+                <element signature="docComment;class#Client#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTTPBuilder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/HTTPBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+              <folding>
+                <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
+                <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+                <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+                <element signature="e#9265#9266#0" expanded="true" />
+                <element signature="e#9290#9291#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestDispatcher.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/web/RequestDispatcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.095652">
+              <caret line="158" column="1" selection-start-line="158" selection-start-column="1" selection-end-line="158" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="docComment;class#RequestDispatcher#0" expanded="false" />
+                <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
+                <element signature="method#findControllerClassName#0;class#RequestDispatcher#0" expanded="false" />
+                <element signature="e#7289#7290#0" expanded="true" />
+                <element signature="e#7316#7317#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumMethod.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/enums/EnumMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+              <folding>
+                <element signature="e#584#585#0" expanded="true" />
+                <element signature="e#618#619#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,7 +155,6 @@
         <option value="$PROJECT_DIR$/src/model/enums/HeaderResponse.java" />
         <option value="$PROJECT_DIR$/src/model/Header.java" />
         <option value="$PROJECT_DIR$/src/model/Content.java" />
-        <option value="$PROJECT_DIR$/src/web/Server.java" />
         <option value="$PROJECT_DIR$/hello.html" />
         <option value="$PROJECT_DIR$/myproject/css/style.css" />
         <option value="$PROJECT_DIR$/myproject/js/myjs.js" />
@@ -127,14 +162,17 @@
         <option value="$PROJECT_DIR$/myproject/hello.html" />
         <option value="$PROJECT_DIR$/src/model/enums/ContentType.java" />
         <option value="$PROJECT_DIR$/src/model/enums/Utils.java" />
+        <option value="$PROJECT_DIR$/src/model/URL.java" />
+        <option value="$PROJECT_DIR$/src/model/Message.java" />
         <option value="$PROJECT_DIR$/src/model/Request.java" />
         <option value="$PROJECT_DIR$/src/model/Response.java" />
-        <option value="$PROJECT_DIR$/src/model/Message.java" />
-        <option value="$PROJECT_DIR$/src/model/URL.java" />
+        <option value="$PROJECT_DIR$/src/model/CustomURL.java" />
         <option value="$PROJECT_DIR$/src/tools/JarLoader.java" />
+        <option value="$PROJECT_DIR$/src/web/Server.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/web/HTTPBuilder.java" />
         <option value="$PROJECT_DIR$/src/web/Client.java" />
+        <option value="$PROJECT_DIR$/src/web/RequestDispatcher.java" />
       </list>
     </option>
   </component>
@@ -214,9 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -325,50 +360,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JouetWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JouetWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JouetWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JouetWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FullScreen" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jars/java-json.jar!/" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jaxen-1.1.1.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="jouetweb" />
+    <property name="last.edited.regexp" value="/10/" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -637,21 +647,21 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48136958" sideWeight="0.50428724" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15180723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48554218" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37349397" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28674698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.68915665" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1795422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4361446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5228916" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38554215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282981" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -671,7 +681,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/web/RequestDispatcher.java</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="78" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -684,9 +702,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -698,6 +714,12 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseURL#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -712,7 +734,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/enums/Method.java">
+    <entry file="file://$PROJECT_DIR$/src/model/enums/EnumMethod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
@@ -725,8 +747,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Request#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -746,7 +767,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="102" selection-start-line="28" selection-start-column="102" selection-end-line="28" selection-end-column="102" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#Response#0" expanded="false" />
+            <element signature="method#Response#0;class#Response#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -755,7 +779,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Client#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -772,9 +796,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -786,6 +808,12 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseURL#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -797,8 +825,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Request#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -807,7 +834,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#Response#0" expanded="false" />
+            <element signature="method#Response#0;class#Response#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -816,7 +846,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Client#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -826,7 +856,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="89" column="67" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Client#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -843,9 +873,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -857,6 +885,12 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseURL#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -868,8 +902,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Request#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -878,7 +911,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#Response#0" expanded="false" />
+            <element signature="method#Response#0;class#Response#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -893,9 +929,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -907,6 +941,12 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseURL#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -929,8 +969,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Request#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -939,7 +978,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#Response#0" expanded="false" />
+            <element signature="method#Response#0;class#Response#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -954,9 +996,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -968,6 +1008,12 @@
             <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
             <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#handleRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseURL#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#getContentArray#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseHeaderFields#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
@@ -986,8 +1032,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Request#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -996,7 +1041,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#Response#0" expanded="false" />
+            <element signature="method#Response#0;class#Response#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,25 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14925373">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3544776">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#Message#0" expanded="false" />
-            <element signature="method#Message#0;class#Message#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myproject/hello.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.115384616">
@@ -1041,41 +1070,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/enums/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27985075">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/URL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18703242">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="docComment;class#URL#0" expanded="false" />
-            <element signature="method#URL#0;class#URL#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/JarLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#JarLoader#0" expanded="false" />
-            <element signature="method#initializeClassLoader#0;class#JarLoader#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/nio/file/Files.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29925188">
           <caret line="89" column="19" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,26 +1081,124 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24314214">
           <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Request.java">
+    <entry file="file://$PROJECT_DIR$/out/production/JouetWeb/web/Client.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33695653">
-          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CustomURL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34124088">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="80" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Request#0" expanded="false" />
+            <element signature="docComment;class#CustomURL#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="docComment;class#Message#0" expanded="false" />
+            <element signature="method#Message#0;class#Message#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11221945">
+        <state vertical-scroll-proportion="0.15202703">
           <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39276809">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#Response#0" expanded="false" />
+            <element signature="method#Response#0;class#Response#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/JarLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09351621">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+          <folding>
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="method#initializeClassLoader#0;class#JarLoader#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/HTTPBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <folding>
+            <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="e#9265#9266#0" expanded="true" />
+            <element signature="e#9290#9291#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3553616">
+          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33291772">
+          <caret line="2124" column="18" selection-start-line="2124" selection-start-column="18" selection-end-line="2124" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/enums/EnumMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#618#619#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.703704">
+          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+          <folding>
+            <element signature="docComment;class#Client#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1114,36 +1210,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/web/RequestDispatcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="79" />
+        <state vertical-scroll-proportion="3.095652">
+          <caret line="158" column="1" selection-start-line="158" selection-start-column="1" selection-end-line="158" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/HTTPBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2703252">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#HTTPBuilder#0" expanded="false" />
-            <element signature="docComment;method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildHTMLContent#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildJSONContent#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="docComment;class#RequestDispatcher#0" expanded="false" />
+            <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
+            <element signature="method#findControllerClassName#0;class#RequestDispatcher#0" expanded="false" />
+            <element signature="e#7289#7290#0" expanded="true" />
+            <element signature="e#7316#7317#0" expanded="true" />
           </folding>
         </state>
       </provider>

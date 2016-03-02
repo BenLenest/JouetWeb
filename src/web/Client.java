@@ -1,7 +1,9 @@
 package web;
 
+import model.Request;
 import model.Response;
-import model.enums.Method;
+import model.enums.EnumMethod;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,13 +18,15 @@ public class Client extends Thread {
     /* ATTRIBUTES ========================================================== */
 
     private Socket clientSocket;
+    private RequestDispatcher requestDispatcher;
 
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Client(Socket cliS){
+    public Client(Socket cliS) {
         super();
         this.clientSocket = cliS;
+        this.requestDispatcher = new RequestDispatcher();
     }
 
     /* PUBLIC METHODS ====================================================== */
@@ -35,29 +39,32 @@ public class Client extends Thread {
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
             String inputLine;
             StringBuilder builder = new StringBuilder();
-            Method method = null;
+            EnumMethod method;
             boolean firstLine = true;
             boolean readEnd = true;
 
             // MAIN LOOP
-            while(true){
+            while (true) {
                 inputLine = in.readLine();
-                if(firstLine && !(inputLine == null || inputLine.isEmpty())){
+                if (firstLine && !(inputLine == null || inputLine.isEmpty())) {
                     builder = new StringBuilder();
-                    method = Method.findMethodByValue(inputLine.split(" ")[0]);
-                    if (method == Method.POST || method == Method.DELETE) {
+                    method = EnumMethod.findMethodByValue(inputLine.split(" ")[0]);
+                    if (method == EnumMethod.POST || method == EnumMethod.DELETE) {
                         readEnd = false;
                     }
                     firstLine = false;
-                }else if ((inputLine == null || inputLine.isEmpty()) && !firstLine) {
+                }
+                else if ((inputLine == null || inputLine.isEmpty()) && !firstLine) {
                     if(readEnd) {
-                        Response resp = HTTPBuilder.handleRequest(HTTPBuilder.parseRequest(builder.toString()));
+                        Request req = HTTPBuilder.parseRequest(builder.toString());
+                        Response resp = requestDispatcher.dispatchRequest(req);
                         String responseToSend = HTTPBuilder.buildResponse(resp);
-                        System.out.println(responseToSend);
+                        System.out.println("Response :\n" + responseToSend);
                         out.println(responseToSend);
                         out.flush();
                         firstLine = true;
-                    }else{
+                    }
+                    else {
                         readEnd = true;
                     }
                 }

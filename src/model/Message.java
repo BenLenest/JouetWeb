@@ -10,15 +10,15 @@ public class Message {
 
     /* ATTRIBUTES ========================================================== */
 
-    private String url;
+    private CustomURL customUrl;
     private Map<String, String> header;
     private String contentType;
     private String content;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Message(String url, Map<String, String> header, String contentType, String content) {
-        this.url = url;
+    public Message(CustomURL customUrl, Map<String, String> header, String contentType, String content) {
+        this.customUrl = customUrl;
         this.header = header;
         this.contentType = contentType;
         this.content = content;
@@ -26,8 +26,8 @@ public class Message {
 
     /* SETTERS ============================================================= */
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCustomUrl(CustomURL customUrl) {
+        this.customUrl = customUrl;
     }
 
     public void setHeader(Map<String, String> header) {
@@ -44,8 +44,8 @@ public class Message {
 
     /* GETTERS ============================================================= */
 
-    public String getUrl() {
-        return url;
+    public CustomURL getCustomUrl() {
+        return customUrl;
     }
 
     public Map<String, String> getHeader() {

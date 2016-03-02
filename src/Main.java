@@ -8,9 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int port = 8081;
+        int port = 8086;
 
-        // web.Server instantiation
+        // Server instantiation
         System.out.println("#1 - Server instantiation");
         Server server = new Server(port);
 

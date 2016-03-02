@@ -1,18 +1,14 @@
 package web;
 
+import model.CustomURL;
 import model.Request;
-import tools.JarLoader;
-import tools.Utils;
-import model.Response;
-import model.enums.Method;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tools.Utils;
+import model.Response;
+import model.enums.EnumMethod;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URLClassLoader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -21,6 +17,8 @@ import java.util.*;
 public class HTTPBuilder {
 
     private static final String BASE_URL = "/myproject/hello.html";
+    private static final int DEFAULT_PORT_HTTP = 80;
+    private static final int DEFAULT_PORT_HTTPS = 443;
 
     /* PUBLIC STATIC METHODS  ============================================== */
 
@@ -34,22 +32,20 @@ public class HTTPBuilder {
 
         // attributes
         String[] lines = input.split("\n");
-        for(int i=0; i < lines.length; i++){
-            System.out.println(i + " : " + lines[i]);
-        }
+        for (int i=0 ; i < lines.length ; i++) System.out.println(i + " : " + lines[i]);
         Map<String, String> headers = parseHeaderFields(lines);
 
         String query;
         String protocol;
         String contentType = "";
         String content = "";
-        Method method;
+        EnumMethod method;
         String host = "";
 
         // parsing : method, query, protocol, host and content length
         String[] head = lines[0].split(" ");
-        method = Method.findMethodByValue(head[0]);
-        query = (head[1].equals("/") ? BASE_URL : head[1]);     //TODO: on devrait pas rediriger vers l'index (genre "http://truc.com/index.html") ?
+        method = EnumMethod.findMethodByValue(head[0]);
+        query = (head[1].equals("/") ? BASE_URL : head[1]);     //TODO: on devrait rediriger vers l'index (genre "http://truc.com/index.html") ?
         protocol = head[2];
         if (headers.containsKey(Utils.HOST)) host = headers.get(Utils.HOST);
 
@@ -68,23 +64,8 @@ public class HTTPBuilder {
             content = getContentArray(lines);
         }
 
-        /* Exemple d'appel de méthode dans un jar
-        try {
-            URLClassLoader classLoader = JarLoader.getInstance().getClassLoader();
-            Class classToLoad = Class.forName("Controller", true, classLoader);
-            java.lang.reflect.Method methodToUse = classToLoad.getDeclaredMethod("brioche");
-            Object instance = classToLoad.newInstance();
-            Object result = methodToUse.invoke(instance);
-            System.out.println(result.toString());
-        }
-        catch (NoSuchMethodException e) { e.printStackTrace(); }
-        catch (InstantiationException e) { e.printStackTrace(); }
-        catch (IllegalAccessException e) { e.printStackTrace(); }
-        catch (ClassNotFoundException e) { e.printStackTrace(); }
-        catch (InvocationTargetException e) { e.printStackTrace(); }*/
-
         // return the Request object
-        return new Request(query, headers, contentType, content, method, host, 0, protocol);
+        return new Request(parseURL(protocol, host, query), headers, contentType, content, method, host, 0, protocol);
     }
 
     /**
@@ -100,7 +81,7 @@ public class HTTPBuilder {
             String type = "text/html";
             if(headers.containsKey("Accept"))
                 type = headers.get("Accept");
-            String url = request.getUrl();
+            CustomURL customUrl = request.getCustomUrl();
             StringBuilder content = new StringBuilder();
             int size = 0;
 
@@ -110,7 +91,8 @@ public class HTTPBuilder {
             header.put("Last-Modified", new Date().toString());
             header.put("Connection", "Closed");
 
-            if(url.equals("/echo")){
+            /*
+            if(customUrl.getPath().equals("/echo")){
                 if(type.contains(Utils.TEXT_HTML)){
                     content.append(HTTPBuilder.buildHTMLContent(request));
                     size = HTTPBuilder.buildHTMLContent(request).length();
@@ -125,7 +107,7 @@ public class HTTPBuilder {
                     type = Utils.TEXT_PLAIN;
                 }
             }else{
-                for (String line : Files.readAllLines(Paths.get("."+url))) {
+                for (String line : Files.readAllLines(Paths.get("."+ customUrl.getPath()))) {
                     content.append(line);
                     size += line.length();
                 }
@@ -133,11 +115,15 @@ public class HTTPBuilder {
                 else if(type.contains(Utils.APPLICATION_JSON)) type = Utils.APPLICATION_JSON;
                 else if(type.contains(Utils.TEXT_PLAIN)) type = Utils.TEXT_PLAIN;
             }
+            */
+            if(type.contains(Utils.TEXT_HTML)) type = Utils.TEXT_HTML;
+            else if(type.contains(Utils.APPLICATION_JSON)) type = Utils.APPLICATION_JSON;
+            else if(type.contains(Utils.TEXT_PLAIN)) type = Utils.TEXT_PLAIN;
 
             header.put(Utils.CONTENT_LENGTH, Integer.toString(size));
             header.put(Utils.CONTENT_TYPE, type);
 
-            return new Response(200, url, header, request.getContentType(), content.toString());
+            return new Response(200, customUrl, header, request.getContentType(), content.toString());
         } else {
             System.out.println("--> The received request couldn't be parsed.");
         }
@@ -156,7 +142,11 @@ public class HTTPBuilder {
         Iterator i = set.iterator();
         while(i.hasNext()) {
             Map.Entry me = (Map.Entry)i.next();
-            response.append(me.getKey()).append(": ").append(me.getValue()+"\r\n");
+            if (me.getKey().equals(Utils.CONTENT_LENGTH)) {
+                response.append(me.getKey()).append(": ").append(resp.getContent().length()+"\r\n");
+            } else {
+                response.append(me.getKey()).append(": ").append(me.getValue() + "\r\n");
+            }
         }
         response.append("\r\n");
         response.append(resp.getContent());
@@ -164,6 +154,11 @@ public class HTTPBuilder {
     }
 
     /* PRIVATE METHODS ============================================== */
+
+    private static CustomURL parseURL(String protocol, String name, String path) {
+        int port = (protocol.contains("HTTPS") ? DEFAULT_PORT_HTTPS : DEFAULT_PORT_HTTP);
+        return new CustomURL(protocol, name, port, path); //TODO: prendre en compte les ports customs dans l'url (genre : "localhost:8080")
+    }
 
     private static String getContentArray(String[] lines) {
         int index = 0;
@@ -194,7 +189,7 @@ public class HTTPBuilder {
         html.append("<h1>Entête de la requête</h1><p>")
                 .append(req.getMethod())
                 .append(" ")
-                .append(req.getUrl())
+                .append(req.getCustomUrl())
                 .append(" ")
                 .append(req.getProtocol()).append("</p><h1>Header(s) de la requête</h1>");
 
@@ -225,7 +220,7 @@ public class HTTPBuilder {
         JSONObject json = new JSONObject();
         try {
             json.append("Method", req.getMethod());
-            json.append("Url", req.getUrl());
+            json.append("Url", req.getCustomUrl());
             json.append("Protocol", req.getProtocol());
 
             Set set = req.getHeader().entrySet();

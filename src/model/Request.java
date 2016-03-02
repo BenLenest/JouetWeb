@@ -1,12 +1,12 @@
 package model;
 
-import model.enums.Method;
+import model.enums.EnumMethod;
 
 import java.util.Map;
 
 /**
  * Class representing a request with it's method name.
- * @see Method
+ * @see EnumMethod
  *
  * Request example :
  *
@@ -25,15 +25,15 @@ public class Request extends Message {
 
     /* ATTRIBUTES ========================================================== */
 
-    private Method method;
+    private EnumMethod method;
     private String host;
     private int port;
     private String protocol;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Request(String url, Map<String, String> header, String contentType, String content, Method method, String host, int port, String protocol) {
-        super(url, header, contentType, content);
+    public Request(CustomURL customUrl, Map<String, String> header, String contentType, String content, EnumMethod method, String host, int port, String protocol) {
+        super(customUrl, header, contentType, content);
         this.method = method;
         this.host = host;
         this.port = port;
@@ -42,7 +42,7 @@ public class Request extends Message {
 
     /* SETTERS ============================================================= */
 
-    public void setMethod(Method method) {
+    public void setMethod(EnumMethod method) {
         this.method = method;
     }
 
@@ -61,7 +61,7 @@ public class Request extends Message {
 
     /* GETTERS ============================================================= */
 
-    public Method getMethod() {
+    public EnumMethod getMethod() {
         return method;
     }
 

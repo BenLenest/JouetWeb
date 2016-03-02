@@ -1,12 +1,12 @@
 package model;
 
-import model.enums.Method;
+import model.enums.EnumMethod;
 
 import java.util.Map;
 
 /**
  * Class representing a Response with it's method.
- * @see Method
+ * @see EnumMethod
  *
  * Response example :
  *
@@ -26,8 +26,8 @@ public class Response extends Message {
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Response(int statusCode, String url, Map<String, String> header, String contentType, String content) {
-        super(url, header, contentType, content);
+    public Response(int statusCode, CustomURL customUrl, Map<String, String> header, String contentType, String content) {
+        super(customUrl, header, contentType, content);
         this.statusCode = statusCode;
     }
 

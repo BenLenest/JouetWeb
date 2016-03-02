@@ -1,9 +1,9 @@
 package model;
 
 /**
- * URL Model decomposing each part of a URL.
+ * CustomURL Model decomposing each part of a CustomURL.
  */
-public class URL {
+public class CustomURL {
 
     /* ATTRIBUTES ========================================================== */
 
@@ -11,14 +11,17 @@ public class URL {
     private String name;
     private int port;
     private String path;
+    private String[] fields;
 
     /* CONSTRUCTOR ========================================================== */
 
-    public URL(String protocol, String name, int port, String path) {
+    public CustomURL(String protocol, String name, int port, String path) {
         this.protocol = protocol;
         this.name = name;
         this.port = port;
         this.path = path;
+        if (path.startsWith("/")) path = path.substring(1, path.length());
+        this.fields = path.split("/");
     }
 
     /* SETTERS ============================================================== */
@@ -56,4 +59,10 @@ public class URL {
     public String getPath() {
         return path;
     }
+
+    public String[] getFields() {
+        return fields;
+    }
+
+
 }

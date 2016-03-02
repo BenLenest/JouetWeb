@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Class reprensenting a server which receives and send messages.
+ * Class reprensenting a server which creates client connections.
  * @see model.Message
  */
 public class Server {
@@ -25,7 +25,6 @@ public class Server {
 
     public void startListening() {
         try {
-            // open the client socket
             ServerSocket serverSocket = new ServerSocket(port);
             while(true) {
                 clientSocket = serverSocket.accept();

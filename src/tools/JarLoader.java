@@ -4,6 +4,10 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Singleton class loader used to load jar services.
@@ -17,12 +21,12 @@ public class JarLoader {
 
     /* ATTRIBUTES ========================================================== */
 
-    private final URLClassLoader classLoader;
+    private final Map<String, URLClassLoader> classLoaders;
 
     /* INSTANCE ============================================================ */
 
-    private JarLoader(URLClassLoader classLoader) {
-        this.classLoader = classLoader;
+    private JarLoader(Map<String, URLClassLoader> classLoaders) {
+        this.classLoaders = classLoaders;
     }
 
     private static JarLoader INSTANCE = new JarLoader(initializeClassLoader());
@@ -33,23 +37,25 @@ public class JarLoader {
 
     /* GETTERS ========================================================== */
 
-    public URLClassLoader getClassLoader() {
-        return classLoader;
+    public Map<String, URLClassLoader> getClassLoaders() {
+        return classLoaders;
     }
 
     /* PRIVATE STATIC METHODS ============================================== */
 
-    private static URLClassLoader initializeClassLoader() {
+    private static Map<String, URLClassLoader> initializeClassLoader() {
+        Map<String, URLClassLoader> classLoaders = new HashMap<>();
         String servicesDirectory = System.getProperty("user.dir") + "/services/";
         File[] files = new File(servicesDirectory).listFiles();
-        URL[] urls = new URL[files.length];
         for (int i = 0 ; i < files.length ; i++) {
             try {
-                urls[i] = new URL(JarLoader.JAR_PREFIX + servicesDirectory + files[i].getName() + JAR_SUFFIX);
+                URL[] url = new URL[1];
+                url[0] = new URL(JAR_PREFIX + servicesDirectory + files[i].getName() + JAR_SUFFIX);
+                classLoaders.put(files[i].getName(), new URLClassLoader(url, JarLoader.class.getClassLoader()));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
-        return new URLClassLoader(urls, JarLoader.class.getClassLoader());
+        return classLoaders;
     }
 }

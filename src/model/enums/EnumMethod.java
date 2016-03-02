@@ -3,7 +3,7 @@ package model.enums;
 /**
  * Class enumerating the different methods.
  */
-public enum Method {
+public enum EnumMethod {
 
     /* CONSTANTS ========================================================== */
 
@@ -23,14 +23,14 @@ public enum Method {
 
     /* CONSTRUCTOR ========================================================== */
 
-    Method(String value) {
+    EnumMethod(String value) {
         this.value = value;
     }
 
     /* PUBLIC METHODS ========================================================== */
 
-    public static Method findMethodByValue(String value) {
-        for (Method method : Method.values()) {
+    public static EnumMethod findMethodByValue(String value) {
+        for (EnumMethod method : EnumMethod.values()) {
             if (method.value.equals(value)) {
                 return method;
             }
