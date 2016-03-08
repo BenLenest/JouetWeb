@@ -173,6 +173,7 @@ public class HTTPBuilder {
         CustomURL responseUrl = request.getUrl();
         responseUrl.getHeaderFields().remove(EnumHeaderFields.CONTENT_LENGTH.value);
         responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().toString().length()));
+        if(request.getSession()!=null)responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, "sessionToken="+request.getSession().getId());
         response.setUrl(responseUrl);
         return response;
     }

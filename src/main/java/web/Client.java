@@ -51,7 +51,7 @@ public class Client extends Thread {
                 else if ((inputLine == null || inputLine.isEmpty()) && !firstLine) {
                     if (readEnd) {
                         /* TRAITEMENT DE LA REQUETE -------------------- */
-                        Request request = HTTPBuilder.parseStringRequest(builder.toString(), clientSocket.getRemoteSocketAddress());
+                        Request request = HTTPBuilder.parseStringRequest(builder.toString(), clientSocket.getLocalSocketAddress());
                         Response response;
                         if (request.isValid()) response = requestDispatcher.dispatchRequest(request);
                         else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
