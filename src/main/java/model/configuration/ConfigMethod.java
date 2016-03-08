@@ -1,7 +1,6 @@
 package model.configuration;
 
 import com.google.gson.annotations.SerializedName;
-import com.sun.tools.javac.util.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
