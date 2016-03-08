@@ -11,13 +11,14 @@ import model.enums.EnumMethod;
 import model.enums.EnumStatusCode;
 import org.json.JSONObject;
 
+import java.net.SocketAddress;
 import java.util.*;
 
 public class HTTPBuilder {
 
     /* PUBLIC STATIC METHODS (Request) ===================================== */
 
-    public static Request parseStringRequest(String stringRequest) {
+    public static Request parseStringRequest(String stringRequest, SocketAddress ip) {
 
         // parsing of the header and content parts
         int index = stringRequest.indexOf("\n\n");
@@ -30,7 +31,7 @@ public class HTTPBuilder {
         String contentType = url.getHeaderFields().get(EnumHeaderFields.CONTENT_TYPE.value);
         if (url.getControllerName() != null) {
             EnumMethod method = EnumMethod.findMethodByValue(headerPart.split(" ")[0]);
-            Session session = parseRequestSession(url);
+            Session session = parseRequestSession(url, ip);
             return new Request(url, contentType, contentPart, true, method, session);
         } else {
             return new Request(url, contentType, contentPart, false, null, null);
@@ -70,9 +71,25 @@ public class HTTPBuilder {
         }
     }
 
-    public static Session parseRequestSession(CustomURL url) {
+    public static Session parseRequestSession(CustomURL url, SocketAddress ip) {
         String cookie = url.getHeaderFields().get(EnumHeaderFields.COOKIE.value);
-        //TODO: parser le header pour voir si un cookie est déjà présent
+        String key = cookie != null ? parseCookie(cookie) : null;
+        if(key != null){
+            return SessionsManager.getInstance().getSessions().get(key);
+        }else{
+            key = ip.toString();
+            System.out.println(key);
+            return SessionsManager.getInstance().getSessions().put(key, new Session(key));
+        }
+    }
+
+    private static String parseCookie(String cookie){
+        for(String s : cookie.split("; ")){
+            if(s.contains("sessionToken")){
+                String[] sessionToken = s.split("=");
+                if(sessionToken.length>1) return sessionToken[1];
+            }
+        }
         return null;
     }
 
