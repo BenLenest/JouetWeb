@@ -32,7 +32,8 @@ public class Request extends Message {
 
     /* CONSTRUCTOR ========================================================== */
 
-    public Request(CustomURL customUrl, Map<String, String> header, String contentType, String content, EnumMethod method, String host, int port, String protocol) {
+    public Request(CustomURL customUrl, Map<String, String> header, String contentType, String content,
+                   EnumMethod method, String host, int port, String protocol) {
         super(customUrl, header, contentType, content);
         this.method = method;
         this.host = host;
@@ -57,7 +58,6 @@ public class Request extends Message {
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
-
 
     /* GETTERS ============================================================= */
 

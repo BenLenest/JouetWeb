@@ -56,13 +56,18 @@ public class Client extends Thread {
                 }
                 else if ((inputLine == null || inputLine.isEmpty()) && !firstLine) {
                     if(readEnd) {
-                        Request req = HTTPBuilder.parseRequest(builder.toString());
-                        Response resp = requestDispatcher.dispatchRequest(req);
-                        String responseToSend = HTTPBuilder.buildResponse(resp);
+                        /* TRAITEMENT DE LA REQUETE -------------------------------- */
+                        Response response = requestDispatcher.dispatchRequest(builder.toString());
+
+                        /*Request request = HTTPBuilder.parseRequest(builder.toString());
+                        Response response = requestDispatcherOld.dispatchRequest(request);
+                        response = HTTPBuilder.completeResponse(request, response);
+                        String responseToSend = HTTPBuilder.buildResponse(response);
                         System.out.println("Response :\n" + responseToSend);
                         out.println(responseToSend);
                         out.flush();
-                        firstLine = true;
+                        firstLine = true;*/
+                        /* --------------------------------------------------------- */
                     }
                     else {
                         readEnd = true;

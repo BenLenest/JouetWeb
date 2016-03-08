@@ -2,11 +2,12 @@ package web;
 
 import model.CustomURL;
 import model.Request;
+import model.Response;
+import model.enums.EnumContentType;
+import model.enums.EnumMethod;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tools.Utils;
-import model.Response;
-import model.enums.EnumMethod;
 
 import java.io.IOException;
 import java.util.*;
@@ -35,17 +36,20 @@ public class HTTPBuilder {
         for (int i=0 ; i < lines.length ; i++) System.out.println(i + " : " + lines[i]);
         Map<String, String> headers = parseHeaderFields(lines);
 
-        String query;
-        String protocol;
+        String query = "";
+        String protocol = "";
         String contentType = "";
         String content = "";
-        EnumMethod method;
         String host = "";
+        EnumMethod method;
+        Map<String, String> parameters = new HashMap<>();
 
         // parsing : method, query, protocol, host and content length
         String[] head = lines[0].split(" ");
         method = EnumMethod.findMethodByValue(head[0]);
-        query = (head[1].equals("/") ? BASE_URL : head[1]);     //TODO: on devrait rediriger vers l'index (genre "http://truc.com/index.html") ?
+        query = (head[1].equals("/") ? BASE_URL : head[1]);
+        parameters = parseParameters(query);
+
         protocol = head[2];
         if (headers.containsKey(Utils.HOST)) host = headers.get(Utils.HOST);
 
@@ -65,22 +69,21 @@ public class HTTPBuilder {
         }
 
         // return the Request object
-        return new Request(parseURL(protocol, host, query), headers, contentType, content, method, host, 0, protocol);
+        return new Request(parseURL(protocol, host, query, parameters), headers, contentType, content, method, host, 0, protocol);
     }
 
     /**
      *
      * @param request
-     * @return Response
+     * @param response
+     * @return
      * @throws IOException
-     * Generate response after receive a request
      */
-    public static Response handleRequest(Request request) throws IOException {
-        if (request != null) {
+    public static Response completeResponse(Request request, Response response) throws IOException {
+        if (request != null && response != null) {
             Map<String, String> headers = request.getHeader();
             String type = "text/html";
-            if(headers.containsKey("Accept"))
-                type = headers.get("Accept");
+            if(headers.containsKey("Accept")) type = headers.get("Accept");
             CustomURL customUrl = request.getCustomUrl();
             StringBuilder content = new StringBuilder();
             int size = 0;
@@ -91,73 +94,43 @@ public class HTTPBuilder {
             header.put("Last-Modified", new Date().toString());
             header.put("Connection", "Closed");
 
-            /*
-            if(customUrl.getPath().equals("/echo")){
-                if(type.contains(Utils.TEXT_HTML)){
-                    content.append(HTTPBuilder.buildHTMLContent(request));
-                    size = HTTPBuilder.buildHTMLContent(request).length();
-                    type = Utils.TEXT_HTML;
-                }else if(type.contains(Utils.APPLICATION_JSON)){
-                    content.append(HTTPBuilder.buildJSONContent(request));
-                    size = HTTPBuilder.buildJSONContent(request).length();
-                    type = Utils.APPLICATION_JSON;
-                }else if(type.contains(Utils.TEXT_PLAIN)){
-                    content.append(HTTPBuilder.buildPLAINContent(request));
-                    size = HTTPBuilder.buildPLAINContent(request).length();
-                    type = Utils.TEXT_PLAIN;
-                }
-            }else{
-                for (String line : Files.readAllLines(Paths.get("."+ customUrl.getPath()))) {
-                    content.append(line);
-                    size += line.length();
-                }
-                if(type.contains(Utils.TEXT_HTML)) type = Utils.TEXT_HTML;
-                else if(type.contains(Utils.APPLICATION_JSON)) type = Utils.APPLICATION_JSON;
-                else if(type.contains(Utils.TEXT_PLAIN)) type = Utils.TEXT_PLAIN;
-            }
-            */
-            if(type.contains(Utils.TEXT_HTML)) type = Utils.TEXT_HTML;
-            else if(type.contains(Utils.APPLICATION_JSON)) type = Utils.APPLICATION_JSON;
-            else if(type.contains(Utils.TEXT_PLAIN)) type = Utils.TEXT_PLAIN;
+            header.put(Utils.CONTENT_LENGTH, Integer.toString(response.getContent().length()));
+            header.put(Utils.CONTENT_TYPE, EnumContentType.findContentTypeByValue(response.getContentType()).name());
+            response.setHeader(header);
 
-            header.put(Utils.CONTENT_LENGTH, Integer.toString(size));
-            header.put(Utils.CONTENT_TYPE, type);
-
-            return new Response(200, customUrl, header, request.getContentType(), content.toString());
-        } else {
-            System.out.println("--> The received request couldn't be parsed.");
+            return response;
         }
         return null;
     }
 
     /**
      *
-     * @param resp
+     * @param response
      * @return String
      * Response to String
      */
-    public static String buildResponse(Response resp){
-        StringBuilder response = new StringBuilder("HTTP/1.1 "+resp.getStatusCode()+" OK\r\n");
-        Set set = resp.getHeader().entrySet();
+    public static String buildResponse(Response response){
+        StringBuilder builder = new StringBuilder("HTTP/1.1 "+response.getStatusCode()+" OK\r\n");
+        Set set = response.getHeader().entrySet();
         Iterator i = set.iterator();
         while(i.hasNext()) {
             Map.Entry me = (Map.Entry)i.next();
             if (me.getKey().equals(Utils.CONTENT_LENGTH)) {
-                response.append(me.getKey()).append(": ").append(resp.getContent().length()+"\r\n");
+                builder.append(me.getKey()).append(": ").append(response.getContent().length()+"\r\n");
             } else {
-                response.append(me.getKey()).append(": ").append(me.getValue() + "\r\n");
+                builder.append(me.getKey()).append(": ").append(me.getValue() + "\r\n");
             }
         }
-        response.append("\r\n");
-        response.append(resp.getContent());
-        return response.toString();
+        builder.append("\r\n");
+        builder.append(response.getContent());
+        return builder.toString();
     }
 
     /* PRIVATE METHODS ============================================== */
 
-    private static CustomURL parseURL(String protocol, String name, String path) {
+    private static CustomURL parseURL(String protocol, String name, String path, Map<String, String> parameters) {
         int port = (protocol.contains("HTTPS") ? DEFAULT_PORT_HTTPS : DEFAULT_PORT_HTTP);
-        return new CustomURL(protocol, name, port, path); //TODO: prendre en compte les ports customs dans l'url (genre : "localhost:8080")
+        return new CustomURL(protocol, name, port, path, parameters); //TODO: prendre en compte les ports customs dans l'url (genre : "localhost:8080")
     }
 
     private static String getContentArray(String[] lines) {
@@ -183,6 +156,35 @@ public class HTTPBuilder {
         }
         return headers;
     }
+
+    private static Map<String, String> parseParameters(String query) {
+        // attributes
+        Map<String, Object> parameters = new HashMap<>();
+        String[] getParams = null;
+
+        // checking for GET parameters and url parameters
+        if (query.contains("?")) getParams = query.split("\\?")[1].split("&");
+        String[] urlParts = query.split("/");
+
+        for (String part : urlParts) {
+            if (part.matches("\\d+")) parameters.put("int", Integer.valueOf(part));
+        }
+
+
+
+
+        /*query = queries[0];
+        for (String param : queries[1].split("&")) {
+            String[] parameter = param.split("=");
+            parameters.put(parameter[0], parameter[1]);
+        }*/
+        return null;
+    }
+
+
+
+
+
 
     private static String buildHTMLContent(Request req){
         StringBuilder html = new StringBuilder("<!DOCTYPE html><html><head><title>My project</title><meta charset='utf-8'></meta></head><body>");
@@ -238,7 +240,7 @@ public class HTTPBuilder {
         return json.toString();
     }
 
-    private static String buildPLAINContent(Request req){
+    private static String buildPlainTextContent(Request req){
         return "";
     }
 }

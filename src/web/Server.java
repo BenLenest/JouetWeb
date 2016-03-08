@@ -6,7 +6,7 @@ import java.net.Socket;
 
 /**
  * Class reprensenting a server which creates client connections.
- * @see model.Message
+ * @see tmodel.Message
  */
 public class Server {
 
