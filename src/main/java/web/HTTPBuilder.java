@@ -3,8 +3,10 @@ package web;
 import model.CustomURL;
 import model.Request;
 import model.Response;
+import model.Session;
 import model.configuration.ConfigMethod;
 import model.enums.EnumContentType;
+import model.enums.EnumHeaderFields;
 import model.enums.EnumMethod;
 import model.enums.EnumStatusCode;
 import org.json.JSONObject;
@@ -25,12 +27,13 @@ public class HTTPBuilder {
 
         // parsing of the header detail
         CustomURL url = parseRequestUrl(headerPart);
-        String contentType = url.getHeaderFields().get("Content-Type");
+        String contentType = url.getHeaderFields().get(EnumHeaderFields.CONTENT_TYPE.value);
         if (url.getControllerName() != null) {
             EnumMethod method = EnumMethod.findMethodByValue(headerPart.split(" ")[0]);
-            return new Request(url, contentType, contentPart, true, method);
+            Session session = parseRequestSession(url);
+            return new Request(url, contentType, contentPart, true, method, session);
         } else {
-            return new Request(url, contentType, contentPart, false, null);
+            return new Request(url, contentType, contentPart, false, null, null);
         }
     }
 
@@ -48,7 +51,7 @@ public class HTTPBuilder {
         // parsing main information
         String[] firstLine = headerPart.split("\n")[0].split(" ");
         String protocol = firstLine[2];
-        String host = headerFields.get("Host");
+        String host = headerFields.get(EnumHeaderFields.HOST.value);
         int port = 0; //TODO: récupérer le bon port
         String path = firstLine[1];
         String[] pathParts = path.split("/");
@@ -65,6 +68,12 @@ public class HTTPBuilder {
         } else {
             return new CustomURL(protocol, host, port, path, null, headerFields, null, null);
         }
+    }
+
+    public static Session parseRequestSession(CustomURL url) {
+        String cookie = url.getHeaderFields().get(EnumHeaderFields.COOKIE.value);
+        //TODO: parser le header pour voir si un cookie est déjà présent
+        return null;
     }
 
     public static Object[] parseParametersValues(Request request, ConfigMethod requestMethod) {
@@ -145,8 +154,8 @@ public class HTTPBuilder {
 
     public static Response completeResponseHeader(Request request, Response response) {
         CustomURL responseUrl = request.getUrl();
-        responseUrl.getHeaderFields().remove("Content-Length");
-        responseUrl.getHeaderFields().put("Content-Length", String.valueOf(response.getContent().toString().length()));
+        responseUrl.getHeaderFields().remove(EnumHeaderFields.CONTENT_LENGTH.value);
+        responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().toString().length()));
         response.setUrl(responseUrl);
         return response;
     }

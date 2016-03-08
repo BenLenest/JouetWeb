@@ -8,8 +8,8 @@ public class Main {
 
         // Launching the server
         Server server = new Server(port);
-        server.startListening();
         System.out.println("Server launched and listening...");
+        server.startListening();
     }
 
 }
