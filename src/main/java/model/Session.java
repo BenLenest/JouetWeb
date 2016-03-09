@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Session {
@@ -17,6 +18,12 @@ public class Session {
         this.id = id;
         this.values = values;
         this.timeOutDate = timeOutDate;
+    }
+
+    public Session(String id){
+        this.id = id;
+        this.values = new HashMap<>();
+        this.timeOutDate = null;
     }
 
     /* GETTERS ============================================================= */
