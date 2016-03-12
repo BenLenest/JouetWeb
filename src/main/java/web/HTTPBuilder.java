@@ -189,6 +189,7 @@ public class HTTPBuilder {
             responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, builder.toString());
         }
         response.setUrl(responseUrl);
+        updateSessionFromResponse(response);
         return response;
     }
 
@@ -208,6 +209,15 @@ public class HTTPBuilder {
                     EnumStatusCode.findMessageByValue(statusCode.code),
                     request.getSession(),
                     statusCode.code);
+        }
+    }
+
+    public static void updateSessionFromResponse(Response response) {
+        if (response.getSession() != null) {
+            if (SessionsManager.getInstance().getSessions().containsKey(response.getSession().getKey())) {
+                SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());
+                SessionsManager.getInstance().getSessions().put(response.getSession().getKey(), response.getSession());
+            }
         }
     }
 }
