@@ -6,51 +6,55 @@ import java.util.Map;
 
 public class Session {
 
+    /* CONSTANTS ========================================================== */
+
+    public final static String SESSION_TOKEN = "sessionToken";
+    public final static String SESSION_EXPIRES = "expires";
+
     /* ATTRIBUTES ========================================================== */
 
-    private String id;
+    private String key;
     private Map<String, String> values;
-    private Date timeOutDate;
+    private Date expires;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Session(String id, Map<String, String> values, Date timeOutDate) {
-        this.id = id;
+    public Session(String key, Map<String, String> values){
+        this.key = key;
         this.values = values;
-        this.timeOutDate = timeOutDate;
+        this.expires = null;
     }
 
-    public Session(String id){
-        this.id = id;
-        this.values = new HashMap<>();
-        this.timeOutDate = null;
+    public Session(String key, Map<String, String> values, Date expires) {
+        this(key, values);
+        this.expires = expires;
     }
 
     /* GETTERS ============================================================= */
 
-    public String getId() {
-        return id;
+    public String getKey() {
+        return key;
     }
 
     public Map<String, String> getValues() {
         return values;
     }
 
-    public Date getTimeOutDate() {
-        return timeOutDate;
+    public Date getExpires() {
+        return expires;
     }
 
     /* SETTERS ============================================================= */
 
-    public void setId(String id) {
-        this.id = id;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public void setValues(Map<String, String> values) {
         this.values = values;
     }
 
-    public void setTimeOutDate(Date timeOutDate) {
-        this.timeOutDate = timeOutDate;
+    public void setExpires(Date expires) {
+        this.expires = expires;
     }
 }

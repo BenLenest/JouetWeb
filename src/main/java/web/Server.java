@@ -21,11 +21,7 @@ public class Server {
     public void startListening() {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            while (true) {
-                Socket clientSocket = serverSocket.accept();
-                Client client = new Client(clientSocket);
-                client.run();
-            }
+            while (true) new Client(serverSocket.accept()).run();
         } catch (IOException e) {
             e.printStackTrace();
         }

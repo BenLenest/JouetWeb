@@ -12,6 +12,9 @@ import model.enums.EnumStatusCode;
 import org.json.JSONObject;
 
 import java.net.SocketAddress;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class HTTPBuilder {
@@ -31,10 +34,10 @@ public class HTTPBuilder {
         String contentType = url.getHeaderFields().get(EnumHeaderFields.CONTENT_TYPE.value);
         if (url.getControllerName() != null) {
             EnumMethod method = EnumMethod.findMethodByValue(headerPart.split(" ")[0]);
-            Session session = parseRequestSession(url, ip);
-            return new Request(url, contentType, contentPart, true, method, session);
+            Session session = parseRequestSession(url, ip, url.getApplicationName());
+            return new Request(url, contentType, contentPart, session, true, method);
         } else {
-            return new Request(url, contentType, contentPart, false, null, null);
+            return new Request(url, contentType, contentPart, null, false, null);
         }
     }
 
@@ -71,26 +74,30 @@ public class HTTPBuilder {
         }
     }
 
-    public static Session parseRequestSession(CustomURL url, SocketAddress ip) {
+    public static Session parseRequestSession(CustomURL url, SocketAddress ip, String applicationName) {
         String cookie = url.getHeaderFields().get(EnumHeaderFields.COOKIE.value);
-        String key = cookie != null ? parseCookie(cookie) : null;
-        if(key != null){
+        Map<String, String> values = cookie != null ? parseCookie(cookie) : new LinkedHashMap<>();
+        String key = values.size() > 0 ? values.get(Session.SESSION_TOKEN) : null;
+        if (key != null) {
             return SessionsManager.getInstance().getSessions().get(key);
-        }else{
-            key = ip.toString();
-            System.out.println(key);
-            return SessionsManager.getInstance().getSessions().put(key, new Session(key));
+        } else {
+            key = (ip.toString() + url.getHeaderFields().get(EnumHeaderFields.USER_AGENT.value) + applicationName).replace(";", "").replace(" ", "");
+            values.put(Session.SESSION_TOKEN, key);
+            values.put(Session.SESSION_EXPIRES, new SimpleDateFormat("EEE, dd-MMM-yy HH:mm:ss z").format(new Date()).toString());
+            if (SessionsManager.getInstance().getSessions().containsKey(key)) SessionsManager.getInstance().getSessions().remove(key);
+            SessionsManager.getInstance().getSessions().put(key, new Session(key, values));
+            return SessionsManager.getInstance().getSessions().get(key);
         }
     }
 
-    private static String parseCookie(String cookie){
-        for(String s : cookie.split("; ")){
-            if(s.contains("sessionToken")){
-                String[] sessionToken = s.split("=");
-                if(sessionToken.length>1) return sessionToken[1];
-            }
+    private static Map<String, String> parseCookie(String cookie){
+        Map<String, String> values = new LinkedHashMap<>();
+        String[] cookieValues = cookie.split("; ");
+        for (int i = 0 ; i < cookieValues.length ; i++) {
+            String[] parts = cookieValues[i].split("=");
+            values.put(parts[0], parts[1]);
         }
-        return null;
+        return values;
     }
 
     public static Object[] parseParametersValues(Request request, ConfigMethod requestMethod) {
@@ -141,8 +148,9 @@ public class HTTPBuilder {
         }
 
         // Building the args array
-        argsValues = new Object[argsList.size()];
-        for (int i = 0 ; i < argsList.size() ; i++) argsValues[i] = argsList.get(i);
+        argsValues = new Object[argsList.size()+1];
+        argsValues[0] = request.getSession();
+        for (int i = 0 ; i < argsList.size() ; i++) argsValues[i+1] = argsList.get(i);
         return argsValues;
     }
 
@@ -173,7 +181,13 @@ public class HTTPBuilder {
         CustomURL responseUrl = request.getUrl();
         responseUrl.getHeaderFields().remove(EnumHeaderFields.CONTENT_LENGTH.value);
         responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().toString().length()));
-        if(request.getSession()!=null)responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, "sessionToken="+request.getSession().getId());
+        if (request.getSession()!=null) {
+            StringBuilder builder = new StringBuilder();
+            for (Map.Entry<String, String> entry : request.getSession().getValues().entrySet())
+                builder.append(entry.getKey() + "=" + entry.getValue() + "; ");
+            builder.replace(builder.length()-1, builder.length(), "");
+            responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, builder.toString());
+        }
         response.setUrl(responseUrl);
         return response;
     }
@@ -185,12 +199,14 @@ public class HTTPBuilder {
                     new Response(null,
                             EnumContentType.TEXT_HTML.value,
                             EnumStatusCode.findMessageByValue(statusCode.code),
+                            request.getSession(),
                             statusCode.code)
             );
         } else {
             return new Response(null,
                     EnumContentType.TEXT_HTML.value,
                     EnumStatusCode.findMessageByValue(statusCode.code),
+                    request.getSession(),
                     statusCode.code);
         }
     }

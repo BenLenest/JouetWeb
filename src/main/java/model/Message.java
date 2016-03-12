@@ -15,13 +15,15 @@ public class Message {
     private CustomURL url;
     private String contentType;
     private String content;
+    private Session session;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Message(CustomURL url, String contentType, String content) {
+    public Message(CustomURL url, String contentType, String content, Session session) {
         this.url = url;
         this.contentType = (contentType != null ? contentType : TEXT_HTML);
         this.content = (content != null ? content : "");
+        this.session = session;
     }
 
     /* GETTERS ============================================================= */
@@ -38,6 +40,10 @@ public class Message {
         return content;
     }
 
+    public Session getSession() {
+        return session;
+    }
+
     /* SETTERS ============================================================= */
 
     public void setUrl(CustomURL url) {
@@ -50,5 +56,9 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

@@ -8,8 +8,8 @@ public class Response extends Message {
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Response(CustomURL url, String contentType, String content, int statusCode) {
-        super(url, contentType, content);
+    public Response(CustomURL url, String contentType, String content, Session session, int statusCode) {
+        super(url, contentType, content, session);
         this.statusCode = statusCode;
     }
 

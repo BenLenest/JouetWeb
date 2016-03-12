@@ -11,6 +11,7 @@ public enum EnumHeaderFields {
     CONTENT_TYPE("Content-Type"),
     CONTENT_LENGTH("Content-Length"),
     HOST("Host"),
+    USER_AGENT("User-Agent"),
     COOKIE("Cookie"),
     SET_COOKIE("Set-Cookie");
 

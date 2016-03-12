@@ -8,15 +8,13 @@ public class Request extends Message {
 
     private boolean valid;
     private EnumMethod method;
-    private Session session;
 
     /* CONSTRUCTOR ========================================================= */
 
-    public Request(CustomURL url, String contentType, String content, boolean valid, EnumMethod method, Session session) {
-        super(url, contentType, content);
+    public Request(CustomURL url, String contentType, String content, Session session, boolean valid, EnumMethod method) {
+        super(url, contentType, content, session);
         this.valid = valid;
         this.method = method;
-        this.session = session;
     }
 
     /* GETTERS ============================================================= */
@@ -27,9 +25,5 @@ public class Request extends Message {
 
     public EnumMethod getMethod() {
         return method;
-    }
-
-    public Session getSession() {
-        return session;
     }
 }

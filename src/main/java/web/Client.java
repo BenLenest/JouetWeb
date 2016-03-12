@@ -10,9 +10,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.SocketAddress;
 
-public class Client extends Thread {
+public class Client implements Runnable {
 
     /* ATTRIBUTES ========================================================== */
 
@@ -30,7 +29,6 @@ public class Client extends Thread {
 
     @Override
     public void run() {
-        super.run();
         try {
             BufferedReader in  = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
@@ -58,7 +56,7 @@ public class Client extends Thread {
                         String stringResponse = HTTPBuilder.buildStringResponse(response);
                         out.println(stringResponse);
                         out.flush();
-                        firstLine = true;
+                        break;
                         /* --------------------------------------------- */
                     }
                     else readEnd = true;

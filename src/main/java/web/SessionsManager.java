@@ -2,22 +2,23 @@ package web;
 
 import model.Session;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class SessionsManager {
 
     /* ATTRIBUTES ========================================================== */
 
-    private final Map<String, Session> sessions;
+    private final LinkedHashMap<String, Session> sessions;
 
     /* INSTANCE ============================================================ */
 
-    private SessionsManager(Map<String, Session> sessions) {
+    private SessionsManager(LinkedHashMap<String, Session> sessions) {
         this.sessions = sessions;
     }
 
-    private static SessionsManager INSTANCE = new SessionsManager(new HashMap<>());
+    private static SessionsManager INSTANCE = new SessionsManager(new LinkedHashMap<>());
 
     public static SessionsManager getInstance() {
         return INSTANCE;

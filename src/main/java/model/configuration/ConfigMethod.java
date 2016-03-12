@@ -1,6 +1,7 @@
 package model.configuration;
 
 import com.google.gson.annotations.SerializedName;
+import model.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,8 +127,9 @@ public class ConfigMethod {
         if (args != null) for (ConfigArgs configArgs : args) getPostTypes(configArgs.getType(), postTypes);
 
         // Building the parameters types array for reflexion
-        urlArgsTypes = new Class[urlTypes.size()];
-        for (int i = 0 ; i < urlTypes.size() ; i++) urlArgsTypes[i] = urlTypes.get(i);
+        urlArgsTypes = new Class[urlTypes.size()+1];
+        urlArgsTypes[0] = Session.class;
+        for (int i = 0 ; i < urlTypes.size() ; i++) urlArgsTypes[i+1] = urlTypes.get(i);
         postArgsTypes = new Class[postTypes.size()];
         for (int i = 0 ; i < postTypes.size() ; i++) postArgsTypes[i] = postTypes.get(i);
 
