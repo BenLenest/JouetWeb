@@ -1,5 +1,6 @@
 package web;
 
+import com.sun.tools.javac.code.Attribute;
 import model.CustomURL;
 import model.Request;
 import model.Response;
@@ -24,6 +25,7 @@ public class HTTPBuilder {
     public static Request parseStringRequest(String stringRequest, SocketAddress ip) {
 
         // parsing of the header and content parts
+        stringRequest = stringRequest.replace("\r", "");
         int index = stringRequest.indexOf("\n\n");
         String headerPart, contentPart = null;
         headerPart = (index != -1 ? stringRequest.substring(0, index) : stringRequest);
@@ -47,9 +49,12 @@ public class HTTPBuilder {
         Map<String, String> headerFields = new HashMap<>();
         String[] headerLines = headerPart.split("\n");
         for (int i = 1 ; i < headerLines.length ; i++) {
-            String key = headerLines[i].split(": ")[0];
-            String value = headerLines[i].split(": ")[1];
-            headerFields.put(key, value);
+            String[] parts = headerLines[i].split(": ");
+            if (parts.length == 2) {
+                String key = parts[0];
+                String value = parts[1];
+                headerFields.put(key, value);
+            }
         }
 
         // parsing main information
@@ -134,17 +139,34 @@ public class HTTPBuilder {
             }
         }
 
-        // Parsing request POST parameters
-        if (request.getContentType().equals(EnumContentType.APPLICATION_JSON.value) && request.getContent() != null) {
-            Class[] postTypes = requestMethod.getPostArgsTypes();
-            JSONObject jsonObject = new JSONObject(request.getContent());
-            for (int i = 0 ; i < jsonObject.names().length() ; i++) {
-                String value = jsonObject.get(jsonObject.names().get(i).toString()).toString();
-                if (postTypes[i] == int.class) argsList.add(Integer.valueOf(value));
-                else if (postTypes[i] == String.class) argsList.add(value);
-                else if (postTypes[i] == double.class) argsList.add(Double.valueOf(value));
-                else if (postTypes[i] == float.class) argsList.add(Float.valueOf(value));
+        if (request.getContent() != null && !request.getContent().equals("") && !request.getContent().equals("\n\n")) {
+
+            // Parsing request POST parameters - JSON
+            if (request.getContentType().matches(EnumContentType.APPLICATION_JSON.value)) {
+                Class[] postTypes = requestMethod.getPostArgsTypes();
+                JSONObject jsonObject = new JSONObject(request.getContent());
+                for (int i = 0; i < jsonObject.names().length(); i++) {
+                    String value = jsonObject.get(jsonObject.names().get(i).toString()).toString();
+                    if (postTypes[i] == int.class) argsList.add(Integer.valueOf(value));
+                    else if (postTypes[i] == String.class) argsList.add(value);
+                    else if (postTypes[i] == double.class) argsList.add(Double.valueOf(value));
+                    else if (postTypes[i] == float.class) argsList.add(Float.valueOf(value));
+                }
             }
+
+            // Parsing request POST parameters - HTML
+            if (request.getContentType().matches(EnumContentType.TEXT_HTML.value)) {
+                Class[] postTypes = requestMethod.getPostArgsTypes();
+                String[] parameters = request.getContent().split("&");
+                for (int i = 0; i < parameters.length; i++) {
+                    String value = parameters[i].split("=")[1];
+                    if (postTypes[i] == int.class) argsList.add(Integer.valueOf(value));
+                    else if (postTypes[i] == String.class) argsList.add(value);
+                    else if (postTypes[i] == double.class) argsList.add(Double.valueOf(value));
+                    else if (postTypes[i] == float.class) argsList.add(Float.valueOf(value));
+                }
+            }
+
         }
 
         // Building the args array
@@ -214,6 +236,14 @@ public class HTTPBuilder {
 
     public static void updateSessionFromResponse(Response response) {
         if (response.getSession() != null) {
+            Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
+            for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
+                if (!entry.getKey().equals(Session.SESSION_EXPIRES))
+                    newSession.getValues().put(entry.getKey(), entry.getValue());
+            }
+            if (response.getSession().getValues().containsKey(Session.SESSION_EXPIRES))
+                newSession.getValues().put(Session.SESSION_EXPIRES, response.getSession().getValues().get(Session.SESSION_EXPIRES));
+            response.setSession(newSession);
             if (SessionsManager.getInstance().getSessions().containsKey(response.getSession().getKey())) {
                 SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());
                 SessionsManager.getInstance().getSessions().put(response.getSession().getKey(), response.getSession());

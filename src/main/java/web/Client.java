@@ -5,10 +5,7 @@ import model.Response;
 import model.enums.EnumMethod;
 import model.enums.EnumStatusCode;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class Client implements Runnable {
@@ -30,43 +27,38 @@ public class Client implements Runnable {
     @Override
     public void run() {
         try {
-            BufferedReader in  = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            // Attributes
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
-            String inputLine;
+            InputStream is = clientSocket.getInputStream();
+            byte[] buffer = new byte[1024];
+            int read;
             StringBuilder builder = new StringBuilder();
-            EnumMethod method;
-            boolean firstLine = true;
-            boolean readEnd = true;
 
-            while (true) {
-                inputLine = in.readLine();
-                if (firstLine && !(inputLine == null || inputLine.isEmpty())) {
-                    builder = new StringBuilder();
-                    method = EnumMethod.findMethodByValue(inputLine.split(" ")[0]);
-                    if (method == EnumMethod.POST || method == EnumMethod.DELETE) readEnd = false;
-                    firstLine = false;
-                }
-                else if ((inputLine == null || inputLine.isEmpty()) && !firstLine) {
-                    if (readEnd) {
-                        /* TRAITEMENT DE LA REQUETE -------------------- */
-                        Request request = HTTPBuilder.parseStringRequest(builder.toString(), clientSocket.getLocalSocketAddress());
-                        Response response;
-                        if (request.isValid()) response = requestDispatcher.dispatchRequest(request);
-                        else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
-                        String stringResponse = HTTPBuilder.buildStringResponse(response);
-                        out.println(stringResponse);
-                        out.flush();
-                        break;
-                        /* --------------------------------------------- */
-                    }
-                    else readEnd = true;
-                }
-                if (inputLine != null) builder.append(inputLine + "\n");
+            // Reading the request
+            while((read = is.read(buffer)) != -1) {
+                String output = new String(buffer, 0, read);
+                builder.append(output);
+                if (is.available() <= 0) break;
             }
+
+            // Printing and parsing the request
+            System.out.println(builder.toString());
+            Request request = HTTPBuilder.parseStringRequest(builder.toString(), clientSocket.getLocalSocketAddress());
+            Response response;
+
+            // Preparing the response
+            if (request.isValid()) response = requestDispatcher.dispatchRequest(request);
+            else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
+
+            // Printing and sending the response
+            String stringResponse = HTTPBuilder.buildStringResponse(response);
+            out.println(stringResponse);
+            out.flush();
+
+            // Closing the client socket
+            clientSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
-
-

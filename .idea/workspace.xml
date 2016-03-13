@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba4e3dc7-05c3-445f-abc3-3398349847a2" name="Default" comment="Merge branch 'master' of https://github.com/BenLenest/JouetWeb&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/JouetWeb/model/Response.class&#10;#&#9;out/production/JouetWeb/web/HTTPParser.class&#10;#&#9;out/production/JouetWeb/web/Server.class&#10;#&#9;src/model/Response.java&#10;#&#9;src/web/HTTPParser.java&#10;#&#9;src/web/Server.java&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/point.jar" afterPath="$PROJECT_DIR$/services/point.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tools/JarLoader.class" afterPath="$PROJECT_DIR$/target/classes/tools/JarLoader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/HTTPBuilder.class" afterPath="$PROJECT_DIR$/target/classes/web/HTTPBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/market.jar" afterPath="$PROJECT_DIR$/services/market.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/Client.java" afterPath="$PROJECT_DIR$/src/main/java/web/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java" />
     </list>
     <ignored path="JouetWeb.iws" />
@@ -33,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/web/Server.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -43,40 +42,60 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/web/Client.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
-              <folding>
-                <element signature="method#Client#0;class#Client#0" expanded="false" />
-              </folding>
+              <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPBuilder.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HTTPBuilder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="102" column="94" selection-start-line="102" selection-start-column="94" selection-end-line="102" selection-end-column="94" />
+            <state vertical-scroll-proportion="1.0694981">
+              <caret line="190" column="49" selection-start-line="190" selection-start-column="49" selection-end-line="190" selection-end-column="49" />
               <folding>
                 <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#updateSessionFromResponse#0;class#HTTPBuilder#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestDispatcher.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RequestDispatcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9714286">
-              <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+              <folding>
+                <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionsManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/SessionsManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#654#655#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumContentType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumContentType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -100,26 +119,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Session.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="10" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="10" />
+              <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
               <folding>
                 <element signature="method#Session#0;class#Session#0" expanded="false" />
                 <element signature="method#Session#1;class#Session#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionsManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/SessionsManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#623#624#0" expanded="true" />
-                <element signature="e#654#655#0" expanded="true" />
-                <element signature="e#784#785#0" expanded="true" />
-                <element signature="e#815#816#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -187,13 +190,13 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Response.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Session.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Client.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/Server.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/web/SessionsManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/tools/JarLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java" />
       </list>
     </option>
   </component>
@@ -788,11 +791,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4807229" sideWeight="0.50428724" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3819277" sideWeight="0.5028612" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15180723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29156625" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25301206" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3819277" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6542169" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19098713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4361446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -800,7 +803,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34096387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42048192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -842,10 +845,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java</url>
           <line>56</line>
           <properties />
-          <option name="timeStamp" value="140" />
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java</url>
+          <line>82</line>
+          <properties />
+          <option name="timeStamp" value="182" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="141" />
+      <option name="time" value="184" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -877,9 +886,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -887,7 +894,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -926,14 +935,11 @@
           <folding>
             <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#updateSessionFromResponse#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -988,9 +994,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="130" selection-start-line="53" selection-start-column="130" selection-end-line="53" selection-end-column="130" />
-          <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -998,7 +1002,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-          <folding />
+          <folding>
+            <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1037,14 +1043,11 @@
           <folding>
             <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#updateSessionFromResponse#0;class#HTTPBuilder#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1087,7 +1090,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-          <folding />
+          <folding>
+            <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,13 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49751243">
           <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumContentType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.049751244">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1298,7 +1296,15 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/web/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumContentType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1306,34 +1312,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/web/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
-          <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
-          </folding>
+          <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Session.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="10" />
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
           <folding>
-            <element signature="method#Session#0;class#Session#0" expanded="false" />
-            <element signature="method#Session#1;class#Session#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/SessionsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
+            <element signature="method#parseConfigurationFile#0;class#RequestDispatcher#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1350,30 +1339,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/SessionsManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="94" selection-start-line="102" selection-start-column="94" selection-end-line="102" selection-end-column="94" />
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
           <folding>
-            <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#updateSessionFromResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9714286">
-          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+          <folding>
+            <element signature="method#Session#0;class#Session#0" expanded="false" />
+            <element signature="method#Session#1;class#Session#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0694981">
+          <caret line="190" column="49" selection-start-line="190" selection-start-column="49" selection-end-line="190" selection-end-column="49" />
+          <folding>
+            <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
