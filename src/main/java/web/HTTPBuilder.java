@@ -1,6 +1,5 @@
 package web;
 
-import com.sun.tools.javac.code.Attribute;
 import model.CustomURL;
 import model.Request;
 import model.Response;
@@ -12,10 +11,8 @@ import model.enums.EnumMethod;
 import model.enums.EnumStatusCode;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.net.SocketAddress;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class HTTPBuilder {
@@ -30,6 +27,9 @@ public class HTTPBuilder {
         String headerPart, contentPart = null;
         headerPart = (index != -1 ? stringRequest.substring(0, index) : stringRequest);
         contentPart = (index != -1 ? stringRequest.substring(index, stringRequest.length()) : null);
+
+        // Secure against favicon request
+        if (headerPart.split("\n")[0].contains("favicon")) return null;
 
         // parsing of the header detail
         CustomURL url = parseRequestUrl(headerPart);
@@ -88,7 +88,9 @@ public class HTTPBuilder {
         } else {
             key = (ip.toString() + url.getHeaderFields().get(EnumHeaderFields.USER_AGENT.value) + applicationName).replace(";", "").replace(" ", "");
             values.put(Session.SESSION_TOKEN, key);
-            values.put(Session.SESSION_EXPIRES, new SimpleDateFormat("EEE, dd-MMM-yy HH:mm:ss z").format(new Date()).toString());
+            values.put(Session.SESSION_PATH, File.separator + url.getApplicationName() + File.separator + url.getControllerName());
+            //values.put(Session.SESSION_PATH, File.separator + url.getApplicationName() + File.separator + url.getControllerName());
+            //values.put(Session.SESSION_EXPIRES, new SimpleDateFormat(Session.SESSION_EXPIRES_DATE_FORMAT).format(new Date()).toString());
             if (SessionsManager.getInstance().getSessions().containsKey(key)) SessionsManager.getInstance().getSessions().remove(key);
             SessionsManager.getInstance().getSessions().put(key, new Session(key, values));
             return SessionsManager.getInstance().getSessions().get(key);
@@ -192,9 +194,15 @@ public class HTTPBuilder {
         StringBuilder builder = new StringBuilder(response.getUrl().getProtocol() + " "
                 + response.getStatusCode() + " "
                 + EnumStatusCode.findNameByValue(response.getStatusCode()) + "\r\n");
-        for (Map.Entry<String, String> entry : response.getUrl().getHeaderFields().entrySet())
-            builder.append(entry.getKey() + ": " + entry.getValue() + "\r\n");
-        builder.append("\r\n");
+        for (Map.Entry<String, String> entry : response.getUrl().getHeaderFields().entrySet()) {
+            if (!entry.getKey().equals(EnumHeaderFields.COOKIE.value) && !entry.getKey().equals(EnumHeaderFields.SET_COOKIE.value))
+                builder.append(entry.getKey() + ": " + entry.getValue() + "\r\n");
+        }
+        builder.append(EnumHeaderFields.SET_COOKIE.value + ":");
+        for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
+            builder.append(" " + entry.getKey() + "=" + entry.getValue() + ";");
+        }
+        builder.append("\r\n\r\n");
         builder.append(response.getContent());
         return builder.toString();
     }
@@ -238,11 +246,13 @@ public class HTTPBuilder {
         if (response.getSession() != null) {
             Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
             for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
-                if (!entry.getKey().equals(Session.SESSION_EXPIRES))
+                if (!entry.getKey().equals(Session.SESSION_EXPIRES) && !entry.getKey().equals(Session.SESSION_PATH))
                     newSession.getValues().put(entry.getKey(), entry.getValue());
             }
             if (response.getSession().getValues().containsKey(Session.SESSION_EXPIRES))
                 newSession.getValues().put(Session.SESSION_EXPIRES, response.getSession().getValues().get(Session.SESSION_EXPIRES));
+            if (response.getSession().getValues().containsKey(Session.SESSION_PATH))
+                newSession.getValues().put(Session.SESSION_PATH, response.getSession().getValues().get(Session.SESSION_PATH));
             response.setSession(newSession);
             if (SessionsManager.getInstance().getSessions().containsKey(response.getSession().getKey())) {
                 SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());

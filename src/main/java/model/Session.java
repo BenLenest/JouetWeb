@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Session {
@@ -9,7 +8,9 @@ public class Session {
     /* CONSTANTS ========================================================== */
 
     public final static String SESSION_TOKEN = "sessionToken";
+    public final static String SESSION_PATH = "path";
     public final static String SESSION_EXPIRES = "expires";
+    public final static String SESSION_EXPIRES_DATE_FORMAT = "EEE, dd-MMM-yy HH:mm:ss z";
 
     /* ATTRIBUTES ========================================================== */
 

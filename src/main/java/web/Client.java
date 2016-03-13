@@ -2,7 +2,6 @@ package web;
 
 import model.Request;
 import model.Response;
-import model.enums.EnumMethod;
 import model.enums.EnumStatusCode;
 
 import java.io.*;
@@ -42,18 +41,23 @@ public class Client implements Runnable {
             }
 
             // Printing and parsing the request
+            System.out.println("REQUEST :");
             System.out.println(builder.toString());
             Request request = HTTPBuilder.parseStringRequest(builder.toString(), clientSocket.getLocalSocketAddress());
-            Response response;
+            if (request != null) {
+                Response response;
 
-            // Preparing the response
-            if (request.isValid()) response = requestDispatcher.dispatchRequest(request);
-            else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
+                // Preparing the response
+                if (request.isValid()) response = requestDispatcher.dispatchRequest(request);
+                else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
 
-            // Printing and sending the response
-            String stringResponse = HTTPBuilder.buildStringResponse(response);
-            out.println(stringResponse);
-            out.flush();
+                // Printing and sending the response
+                String stringResponse = HTTPBuilder.buildStringResponse(response);
+                System.out.println("\n\nRESPONSE :");
+                System.out.println(stringResponse);
+                out.println(stringResponse);
+                out.flush();
+            }
 
             // Closing the client socket
             clientSocket.close();
