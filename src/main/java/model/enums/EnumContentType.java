@@ -6,7 +6,9 @@ public enum EnumContentType {
 
     TEXT_PLAIN("text/plain"),
     TEXT_HTML("text/html"),
-    APPLICATION_JSON("application/json");
+    TEXT_CSS("text/css"),
+    APPLICATION_JSON("application/json"),
+    APPLICATION_JAVASCRIPT("application/javascript");
 
     /* ATTRIBUTES ========================================================== */
 

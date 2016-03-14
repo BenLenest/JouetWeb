@@ -37,9 +37,9 @@ public class HTTPBuilder {
         if (url.getControllerName() != null) {
             EnumMethod method = EnumMethod.findMethodByValue(headerPart.split(" ")[0]);
             Session session = parseRequestSession(url, ip, url.getApplicationName());
-            return new Request(url, contentType, contentPart, session, true, method);
+            return new Request(url, contentType, contentPart, session, true, method, ip.toString(), url.getApplicationName());
         } else {
-            return new Request(url, contentType, contentPart, null, false, null);
+            return new Request(url, contentType, contentPart, null, false, null, null, null);
         }
     }
 
@@ -83,18 +83,8 @@ public class HTTPBuilder {
         String cookie = url.getHeaderFields().get(EnumHeaderFields.COOKIE.value);
         Map<String, String> values = cookie != null ? parseCookie(cookie) : new LinkedHashMap<>();
         String key = values.size() > 0 ? values.get(Session.SESSION_TOKEN) : null;
-        if (key != null) {
-            return SessionsManager.getInstance().getSessions().get(key);
-        } else {
-            key = (ip.toString() + url.getHeaderFields().get(EnumHeaderFields.USER_AGENT.value) + applicationName).replace(";", "").replace(" ", "");
-            values.put(Session.SESSION_TOKEN, key);
-            values.put(Session.SESSION_PATH, File.separator + url.getApplicationName() + File.separator + url.getControllerName());
-            //values.put(Session.SESSION_PATH, File.separator + url.getApplicationName() + File.separator + url.getControllerName());
-            //values.put(Session.SESSION_EXPIRES, new SimpleDateFormat(Session.SESSION_EXPIRES_DATE_FORMAT).format(new Date()).toString());
-            if (SessionsManager.getInstance().getSessions().containsKey(key)) SessionsManager.getInstance().getSessions().remove(key);
-            SessionsManager.getInstance().getSessions().put(key, new Session(key, values));
-            return SessionsManager.getInstance().getSessions().get(key);
-        }
+        if (key != null) return SessionsManager.getInstance().getSessions().get(key);
+        return null;
     }
 
     private static Map<String, String> parseCookie(String cookie){
@@ -173,7 +163,7 @@ public class HTTPBuilder {
 
         // Building the args array
         argsValues = new Object[argsList.size()+1];
-        argsValues[0] = request.getSession();
+        argsValues[0] = request;
         for (int i = 0 ; i < argsList.size() ; i++) argsValues[i+1] = argsList.get(i);
         return argsValues;
     }
@@ -198,17 +188,22 @@ public class HTTPBuilder {
             if (!entry.getKey().equals(EnumHeaderFields.COOKIE.value) && !entry.getKey().equals(EnumHeaderFields.SET_COOKIE.value))
                 builder.append(entry.getKey() + ": " + entry.getValue() + "\r\n");
         }
-        builder.append(EnumHeaderFields.SET_COOKIE.value + ":");
-        for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
-            builder.append(" " + entry.getKey() + "=" + entry.getValue() + ";");
+        if (response.getSession() != null) {
+            builder.append(EnumHeaderFields.SET_COOKIE.value + ":");
+            for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
+                builder.append(" " + entry.getKey() + "=" + entry.getValue() + ";");
+            }
+            builder.append("\r\n\r\n");
+        } else {
+            builder.append("\r\n");
         }
-        builder.append("\r\n\r\n");
         builder.append(response.getContent());
         return builder.toString();
     }
 
     public static Response completeResponseHeader(Request request, Response response) {
         CustomURL responseUrl = request.getUrl();
+        responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_TYPE.value, response.getContentType());
         responseUrl.getHeaderFields().remove(EnumHeaderFields.CONTENT_LENGTH.value);
         responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().toString().length()));
         if (request.getSession()!=null) {
@@ -219,7 +214,7 @@ public class HTTPBuilder {
             responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, builder.toString());
         }
         response.setUrl(responseUrl);
-        updateSessionFromResponse(response);
+        if (response.getSession() != null) updateSessionFromResponse(request, response);
         return response;
     }
 
@@ -242,8 +237,32 @@ public class HTTPBuilder {
         }
     }
 
-    public static void updateSessionFromResponse(Response response) {
+    public static void updateSessionFromResponse(Request request, Response response) {
         if (response.getSession() != null) {
+            Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
+            for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
+                if (!entry.getKey().equals(Session.SESSION_EXPIRES) && !entry.getKey().equals(Session.SESSION_PATH))
+                    newSession.getValues().put(entry.getKey(), entry.getValue());
+            }
+            if (response.getSession().getValues().containsKey(Session.SESSION_EXPIRES))
+                newSession.getValues().put(Session.SESSION_EXPIRES, response.getSession().getValues().get(Session.SESSION_EXPIRES));
+            if (response.getSession().getValues().containsKey(Session.SESSION_PATH))
+                newSession.getValues().put(Session.SESSION_PATH, response.getSession().getValues().get(Session.SESSION_PATH));
+            response.setSession(newSession);
+
+            if (SessionsManager.getInstance().getSessions().containsKey(newSession.getKey())) {
+                SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());
+                SessionsManager.getInstance().getSessions().put(newSession.getKey(), newSession);
+            } else {
+                SessionsManager.getInstance().getSessions().put(newSession.getKey(), newSession);
+            }
+        } else {
+            if (request.getSession() != null) {
+                if (SessionsManager.getInstance().getSessions().containsKey(request.getSession().getKey()))
+                    SessionsManager.getInstance().getSessions().remove(request.getSession().getKey());
+            }
+        }
+        /*if (response.getSession() != null) {
             Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
             for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
                 if (!entry.getKey().equals(Session.SESSION_EXPIRES) && !entry.getKey().equals(Session.SESSION_PATH))
@@ -258,6 +277,6 @@ public class HTTPBuilder {
                 SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());
                 SessionsManager.getInstance().getSessions().put(response.getSession().getKey(), response.getSession());
             }
-        }
+        }*/
     }
 }

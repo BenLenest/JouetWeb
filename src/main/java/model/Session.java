@@ -1,5 +1,7 @@
 package model;
 
+import model.enums.EnumHeaderFields;
+
 import java.util.Date;
 import java.util.Map;
 
@@ -57,5 +59,14 @@ public class Session {
 
     public void setExpires(Date expires) {
         this.expires = expires;
+    }
+
+    /* PUBLIC STATIC METHODS =============================================== */
+
+    public static String generateSessionKey(Request request) {
+        String clientIP = request.getClientIP();
+        String userAgent = request.getUrl().getHeaderFields().get(EnumHeaderFields.USER_AGENT.value);
+        String applicationName = request.getUrl().getApplicationName();
+        return (clientIP + userAgent + applicationName).replace(";", "").replace(" ", "");
     }
 }
