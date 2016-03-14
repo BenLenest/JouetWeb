@@ -11,7 +11,6 @@ import model.enums.EnumMethod;
 import model.enums.EnumStatusCode;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.net.SocketAddress;
 import java.util.*;
 
@@ -36,7 +35,7 @@ public class HTTPBuilder {
         String contentType = url.getHeaderFields().get(EnumHeaderFields.CONTENT_TYPE.value);
         if (url.getControllerName() != null) {
             EnumMethod method = EnumMethod.findMethodByValue(headerPart.split(" ")[0]);
-            Session session = parseRequestSession(url, ip, url.getApplicationName());
+            Session session = parseRequestSession(url);
             return new Request(url, contentType, contentPart, session, true, method, ip.toString(), url.getApplicationName());
         } else {
             return new Request(url, contentType, contentPart, null, false, null, null, null);
@@ -79,7 +78,7 @@ public class HTTPBuilder {
         }
     }
 
-    public static Session parseRequestSession(CustomURL url, SocketAddress ip, String applicationName) {
+    public static Session parseRequestSession(CustomURL url) {
         String cookie = url.getHeaderFields().get(EnumHeaderFields.COOKIE.value);
         Map<String, String> values = cookie != null ? parseCookie(cookie) : new LinkedHashMap<>();
         String key = values.size() > 0 ? values.get(Session.SESSION_TOKEN) : null;
@@ -205,17 +204,51 @@ public class HTTPBuilder {
         CustomURL responseUrl = request.getUrl();
         responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_TYPE.value, response.getContentType());
         responseUrl.getHeaderFields().remove(EnumHeaderFields.CONTENT_LENGTH.value);
-        responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().toString().length()));
-        if (request.getSession()!=null) {
-            StringBuilder builder = new StringBuilder();
-            for (Map.Entry<String, String> entry : request.getSession().getValues().entrySet())
-                builder.append(entry.getKey() + "=" + entry.getValue() + "; ");
-            builder.replace(builder.length()-1, builder.length(), "");
-            responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, builder.toString());
+        responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().length()));
+
+        if (!response.getContentType().equals(EnumContentType.APPLICATION_JAVASCRIPT.value) && !response.getContentType().equals(EnumContentType.TEXT_CSS.value)) {
+            response.setSession(updateSessionFromResponse(request, response));
+            if (response.getSession() != null) {
+                StringBuilder builder = new StringBuilder();
+                for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet())
+                    builder.append(entry.getKey() + "=" + entry.getValue() + "; ");
+                builder.replace(builder.length() - 1, builder.length(), "");
+                responseUrl.getHeaderFields().put(EnumHeaderFields.SET_COOKIE.value, builder.toString());
+            }
         }
         response.setUrl(responseUrl);
-        if (response.getSession() != null) updateSessionFromResponse(request, response);
         return response;
+    }
+
+    public static Session updateSessionFromResponse(Request request, Response response) {
+        if (response.getSession() != null) {
+            Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
+            for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
+                if (!entry.getKey().equals(Session.SESSION_EXPIRES) && !entry.getKey().equals(Session.SESSION_PATH))
+                    newSession.getValues().put(entry.getKey(), entry.getValue());
+            }
+            if (response.getSession().getValues().containsKey(Session.SESSION_EXPIRES))
+                newSession.getValues().put(Session.SESSION_EXPIRES, response.getSession().getValues().get(Session.SESSION_EXPIRES));
+            if (response.getSession().getValues().containsKey(Session.SESSION_PATH))
+                newSession.getValues().put(Session.SESSION_PATH, response.getSession().getValues().get(Session.SESSION_PATH));
+            response.setSession(newSession);
+
+            if (SessionsManager.getInstance().getSessions().containsKey(newSession.getKey())) {
+                SessionsManager.getInstance().getSessions().remove(newSession.getKey());
+                SessionsManager.getInstance().getSessions().put(newSession.getKey(), newSession);
+            } else {
+                SessionsManager.getInstance().getSessions().put(newSession.getKey(), newSession);
+            }
+            return newSession;
+        } else {
+            if (request.getSession() != null) {
+                if (SessionsManager.getInstance().getSessions().containsKey(request.getSession().getKey())) {
+                    SessionsManager.getInstance().getSessions().remove(request.getSession().getKey());
+                    request.setSession(null);
+                }
+            }
+            return null;
+        }
     }
 
     public static Response buildErrorResponse(Request request, EnumStatusCode statusCode) {
@@ -235,48 +268,5 @@ public class HTTPBuilder {
                     request.getSession(),
                     statusCode.code);
         }
-    }
-
-    public static void updateSessionFromResponse(Request request, Response response) {
-        if (response.getSession() != null) {
-            Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
-            for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
-                if (!entry.getKey().equals(Session.SESSION_EXPIRES) && !entry.getKey().equals(Session.SESSION_PATH))
-                    newSession.getValues().put(entry.getKey(), entry.getValue());
-            }
-            if (response.getSession().getValues().containsKey(Session.SESSION_EXPIRES))
-                newSession.getValues().put(Session.SESSION_EXPIRES, response.getSession().getValues().get(Session.SESSION_EXPIRES));
-            if (response.getSession().getValues().containsKey(Session.SESSION_PATH))
-                newSession.getValues().put(Session.SESSION_PATH, response.getSession().getValues().get(Session.SESSION_PATH));
-            response.setSession(newSession);
-
-            if (SessionsManager.getInstance().getSessions().containsKey(newSession.getKey())) {
-                SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());
-                SessionsManager.getInstance().getSessions().put(newSession.getKey(), newSession);
-            } else {
-                SessionsManager.getInstance().getSessions().put(newSession.getKey(), newSession);
-            }
-        } else {
-            if (request.getSession() != null) {
-                if (SessionsManager.getInstance().getSessions().containsKey(request.getSession().getKey()))
-                    SessionsManager.getInstance().getSessions().remove(request.getSession().getKey());
-            }
-        }
-        /*if (response.getSession() != null) {
-            Session newSession = new Session(response.getSession().getKey(), new LinkedHashMap<>());
-            for (Map.Entry<String, String> entry : response.getSession().getValues().entrySet()) {
-                if (!entry.getKey().equals(Session.SESSION_EXPIRES) && !entry.getKey().equals(Session.SESSION_PATH))
-                    newSession.getValues().put(entry.getKey(), entry.getValue());
-            }
-            if (response.getSession().getValues().containsKey(Session.SESSION_EXPIRES))
-                newSession.getValues().put(Session.SESSION_EXPIRES, response.getSession().getValues().get(Session.SESSION_EXPIRES));
-            if (response.getSession().getValues().containsKey(Session.SESSION_PATH))
-                newSession.getValues().put(Session.SESSION_PATH, response.getSession().getValues().get(Session.SESSION_PATH));
-            response.setSession(newSession);
-            if (SessionsManager.getInstance().getSessions().containsKey(response.getSession().getKey())) {
-                SessionsManager.getInstance().getSessions().remove(response.getSession().getKey());
-                SessionsManager.getInstance().getSessions().put(response.getSession().getKey(), response.getSession());
-            }
-        }*/
     }
 }

@@ -52,7 +52,7 @@ public class RequestDispatcher {
             requestController.generateMethodsRegex();
             Class classToLoad = Class.forName(requestController.getController(), true, loader);
 
-            // Check if the request is for a JavaScript or CSS
+            // Check if the request is for a JavaScript or CSS file
             if (url.getQuery().contains(SUFFIX_JS) || url.getQuery().contains(SUFFIX_CSS)) {
                 response = getJsOrCssContent(url.getQuery(), loader);
             }
