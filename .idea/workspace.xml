@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba4e3dc7-05c3-445f-abc3-3398349847a2" name="Default" comment="Merge branch 'master' of https://github.com/BenLenest/JouetWeb&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/JouetWeb/model/Response.class&#10;#&#9;out/production/JouetWeb/web/HTTPParser.class&#10;#&#9;out/production/JouetWeb/web/Server.class&#10;#&#9;src/model/Response.java&#10;#&#9;src/web/HTTPParser.java&#10;#&#9;src/web/Server.java&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/tools/WebTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archives/Market.zip" afterPath="$PROJECT_DIR$/archives/Market.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archives/PointService.zip" afterPath="$PROJECT_DIR$/archives/PointService.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archives/ServiceTemplate.zip" afterPath="$PROJECT_DIR$/archives/ServiceTemplate.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/market.jar" afterPath="$PROJECT_DIR$/services/market.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/point.jar" afterPath="$PROJECT_DIR$/services/point.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JouetWeb.iws" />
@@ -35,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/web/Client.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
+              <caret line="51" column="87" selection-start-line="51" selection-start-column="87" selection-end-line="51" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestDispatcher.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RequestDispatcher.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.9725686">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
                 <element signature="method#parseJarFileByName#0;class#RequestDispatcher#0" expanded="false" />
                 <element signature="method#getJsOrCssContent#0;class#RequestDispatcher#0" expanded="false" />
@@ -56,17 +51,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ConfigRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/configuration/ConfigRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="HTTPBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+              <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
               <folding>
                 <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
-                <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
                 <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
@@ -89,14 +93,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebTemplate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebTemplate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tools/WebTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.8125">
-              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
               <folding>
                 <element signature="method#WebTemplate#0;class#WebTemplate#0" expanded="false" />
+                <element signature="method#generateContent#0;class#WebTemplate#0" expanded="false" />
+                <element signature="method#readTemplateFile#0;class#WebTemplate#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumStatusCode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumStatusCode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,9 +186,9 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Bite.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Session.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/enums/EnumContentType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/tools/WebTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java" />
       </list>
     </option>
   </component>
@@ -786,7 +802,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -795,8 +811,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3819277" sideWeight="0.5028612" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15180723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24939759" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.90843374" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33373493" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22289157" sideWeight="0.49571276" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19098713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4361446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -805,7 +821,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3421687" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -843,8 +859,14 @@
           <properties />
           <option name="timeStamp" value="100" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java</url>
+          <line>116</line>
+          <properties />
+          <option name="timeStamp" value="241" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="237" />
+      <option name="time" value="243" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -901,7 +923,6 @@
             <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
@@ -1014,7 +1035,6 @@
             <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
             <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
@@ -1205,17 +1225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/configuration/ConfigRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding>
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumContentType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1239,14 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumStatusCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1329,43 +1330,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tools/WebTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#WebTemplate#0;class#WebTemplate#0" expanded="false" />
+            <element signature="method#generateContent#0;class#WebTemplate#0" expanded="false" />
+            <element signature="method#readTemplateFile#0;class#WebTemplate#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/configuration/ConfigRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
-          <folding>
-            <element signature="method#parseJarFileByName#0;class#RequestDispatcher#0" expanded="false" />
-            <element signature="method#getJsOrCssContent#0;class#RequestDispatcher#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding>
-            <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#parseParametersValues#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#updateSessionFromResponse#0;class#HTTPBuilder#0" expanded="false" />
-            <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
-          </folding>
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1379,12 +1360,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tools/WebTemplate.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EnumStatusCode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.8125">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="87" selection-start-line="51" selection-start-column="87" selection-end-line="51" selection-end-column="87" />
           <folding>
-            <element signature="method#WebTemplate#0;class#WebTemplate#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/HTTPBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding>
+            <element signature="method#parseStringRequest#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseRequestUrl#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseRequestSession#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#parseCookie#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#findArgType#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildStringResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#completeResponseHeader#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#updateSessionFromResponse#0;class#HTTPBuilder#0" expanded="false" />
+            <element signature="method#buildErrorResponse#0;class#HTTPBuilder#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/RequestDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9725686">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding>
+            <element signature="method#parseJarFileByName#0;class#RequestDispatcher#0" expanded="false" />
+            <element signature="method#getJsOrCssContent#0;class#RequestDispatcher#0" expanded="false" />
           </folding>
         </state>
       </provider>
