@@ -9,10 +9,11 @@ import model.configuration.ConfigMethod;
 import model.configuration.ConfigRequest;
 import model.enums.EnumContentType;
 import model.enums.EnumStatusCode;
+import org.apache.commons.io.IOUtils;
 import tools.JarLoader;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
@@ -26,9 +27,13 @@ public class RequestDispatcher {
     private final String SUFFIX_JAR = ".jar";
     private final String SUFFIX_JS = ".js";
     private final String SUFFIX_CSS = ".css";
+    private final String SUFFIX_FONT = ".ttf";
+    private final String SUFFIX_IMG = ".png";
     private final String CONFIG_FILE = "configuration.json";
     private final String DIRECTORY_JS = "web/js/";
     private final String DIRECTORY_CSS = "web/css/";
+    private final String DIRECTORY_FONT = "web/font/";
+    private final String DIRECTORY_IMG = "web/img/";
 
     /* CONSTRUCTOR ========================================================= */
 
@@ -53,8 +58,8 @@ public class RequestDispatcher {
             Class classToLoad = Class.forName(requestController.getController(), true, loader);
 
             // Check if the request is for a JavaScript or CSS file
-            if (url.getQuery().contains(SUFFIX_JS) || url.getQuery().contains(SUFFIX_CSS)) {
-                response = getJsOrCssContent(url.getQuery(), loader);
+            if (url.getQuery().contains(SUFFIX_JS) || url.getQuery().contains(SUFFIX_CSS) || url.getQuery().contains(SUFFIX_FONT) || url.getQuery().contains(SUFFIX_IMG)) {
+                response = getResource(url.getQuery(), loader);
             }
             else {
                 // Retrieving the proper method
@@ -94,20 +99,31 @@ public class RequestDispatcher {
         return null;
     }
 
-    private Response getJsOrCssContent(String fileName, URLClassLoader loader) {
+    private Response getResource(String fileName, URLClassLoader loader) {
         Response response = null;
-        String content = null;
+        byte[] content = null;
         String contentType = null;
+        String path = null;
         if (fileName.contains(SUFFIX_JS)) {
-            content = parseJarFileByName(loader, DIRECTORY_JS + fileName);
+            path = DIRECTORY_JS + fileName;
             contentType = EnumContentType.APPLICATION_JAVASCRIPT.value;
         }
         else if (fileName.contains(SUFFIX_CSS)) {
-            content = parseJarFileByName(loader, DIRECTORY_CSS + fileName);
+            path = DIRECTORY_CSS + fileName;
             contentType = EnumContentType.TEXT_CSS.value;
         }
-        if (content != null) response = new Response(null, contentType, content, null, EnumStatusCode.SUCCESS.code);
-        else response = new Response(null, contentType, null, null, EnumStatusCode.NOT_FOUND.code);
+        else if (fileName.contains(SUFFIX_FONT)) {
+            path = DIRECTORY_FONT + fileName;
+            contentType = EnumContentType.TEXT_CSS.value;
+        }
+        else if (fileName.contains(SUFFIX_IMG)) {
+            path = DIRECTORY_IMG + fileName;
+            contentType = EnumContentType.TEXT_CSS.value;
+        }
+        try { content = IOUtils.toByteArray(loader.getResourceAsStream(path)); }
+        catch (IOException e) { e.printStackTrace(); }
+        if (content != null) response = new Response(null, contentType, null, null, EnumStatusCode.SUCCESS.code, content);
+        else response = new Response(null, contentType, null, null, EnumStatusCode.NOT_FOUND.code, content);
         return response;
     }
 }

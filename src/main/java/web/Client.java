@@ -27,7 +27,8 @@ public class Client implements Runnable {
     public void run() {
         try {
             // Attributes
-            PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
+            //PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
+            OutputStream out = clientSocket.getOutputStream();
             InputStream is = clientSocket.getInputStream();
             byte[] buffer = new byte[1024];
             int read;
@@ -55,7 +56,8 @@ public class Client implements Runnable {
                 String stringResponse = HTTPBuilder.buildStringResponse(response);
                 System.out.println("\n\nRESPONSE :");
                 System.out.println(stringResponse);
-                out.println(stringResponse);
+                //out.println(stringResponse);
+                out.write(response.getByteContent());
                 out.flush();
             }
 

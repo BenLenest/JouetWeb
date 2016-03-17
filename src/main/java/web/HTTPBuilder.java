@@ -196,6 +196,9 @@ public class HTTPBuilder {
         } else {
             builder.append("\r\n");
         }
+        String header = builder.toString();
+        builder = new StringBuilder();
+        builder.append(header.getBytes().toString());
         builder.append(response.getContent());
         return builder.toString();
     }
@@ -257,16 +260,18 @@ public class HTTPBuilder {
                     request,
                     new Response(null,
                             EnumContentType.TEXT_HTML.value,
-                            EnumStatusCode.findMessageByValue(statusCode.code),
+                            null,
                             request.getSession(),
-                            statusCode.code)
+                            statusCode.code,
+                            EnumStatusCode.findMessageByValue(statusCode.code).getBytes())
             );
         } else {
             return new Response(null,
                     EnumContentType.TEXT_HTML.value,
-                    EnumStatusCode.findMessageByValue(statusCode.code),
+                    null,
                     request.getSession(),
-                    statusCode.code);
+                    statusCode.code,
+                    EnumStatusCode.findMessageByValue(statusCode.code).getBytes());
         }
     }
 }
