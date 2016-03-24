@@ -75,7 +75,8 @@ public class RequestDispatcher {
                 response = (Response) methodToUse.invoke(instance, args);
             }
 
-            return HTTPBuilder.completeResponseHeader(request, response);
+            response = HTTPBuilder.completeResponseHeader(request, response);
+            return response;
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +101,7 @@ public class RequestDispatcher {
     }
 
     private Response getResource(String fileName, URLClassLoader loader) {
-        Response response = null;
+        Response response;
         byte[] content = null;
         String contentType = null;
         String path = null;
@@ -123,7 +124,7 @@ public class RequestDispatcher {
         try { content = IOUtils.toByteArray(loader.getResourceAsStream(path)); }
         catch (IOException e) { e.printStackTrace(); }
         if (content != null) response = new Response(null, contentType, null, null, EnumStatusCode.SUCCESS.code, content);
-        else response = new Response(null, contentType, null, null, EnumStatusCode.NOT_FOUND.code, content);
+        else response = new Response(null, contentType, null, null, EnumStatusCode.NOT_FOUND.code, null);
         return response;
     }
 }

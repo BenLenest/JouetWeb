@@ -179,7 +179,7 @@ public class HTTPBuilder {
 
     /* PUBLIC STATIC METHODS (Response) ==================================== */
 
-    public static String buildStringResponse(Response response) {
+    public static byte[] buildBytesResponse(Response response) {
         StringBuilder builder = new StringBuilder(response.getUrl().getProtocol() + " "
                 + response.getStatusCode() + " "
                 + EnumStatusCode.findNameByValue(response.getStatusCode()) + "\r\n");
@@ -197,17 +197,18 @@ public class HTTPBuilder {
             builder.append("\r\n");
         }
         String header = builder.toString();
-        builder = new StringBuilder();
-        builder.append(header.getBytes().toString());
-        builder.append(response.getContent());
-        return builder.toString();
+        byte[] byteHeader = header.getBytes();
+        byte[] byteResponse = new byte[byteHeader.length + response.getByteContent().length];
+        System.arraycopy(byteHeader, 0, byteResponse, 0, byteHeader.length);
+        System.arraycopy(response.getByteContent(), 0, byteResponse, byteHeader.length, response.getByteContent().length);
+        return byteResponse;
     }
 
     public static Response completeResponseHeader(Request request, Response response) {
         CustomURL responseUrl = request.getUrl();
         responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_TYPE.value, response.getContentType());
         responseUrl.getHeaderFields().remove(EnumHeaderFields.CONTENT_LENGTH.value);
-        responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getContent().length()));
+        responseUrl.getHeaderFields().put(EnumHeaderFields.CONTENT_LENGTH.value, String.valueOf(response.getByteContent().length));
 
         if (!response.getContentType().equals(EnumContentType.APPLICATION_JAVASCRIPT.value) && !response.getContentType().equals(EnumContentType.TEXT_CSS.value)) {
             response.setSession(updateSessionFromResponse(request, response));
