@@ -20,6 +20,7 @@ public class Server {
     public void startListening() {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
+            System.out.println("\nNEW CLIENT :\n");
             while (true) new Client(serverSocket.accept()).run();
         } catch (IOException e) {
             e.printStackTrace();

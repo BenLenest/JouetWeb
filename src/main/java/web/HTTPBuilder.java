@@ -23,7 +23,7 @@ public class HTTPBuilder {
         // parsing of the header and content parts
         stringRequest = stringRequest.replace("\r", "");
         int index = stringRequest.indexOf("\n\n");
-        String headerPart, contentPart = null;
+        String headerPart, contentPart;
         headerPart = (index != -1 ? stringRequest.substring(0, index) : stringRequest);
         contentPart = (index != -1 ? stringRequest.substring(index, stringRequest.length()) : null);
 
@@ -178,6 +178,24 @@ public class HTTPBuilder {
     }
 
     /* PUBLIC STATIC METHODS (Response) ==================================== */
+
+    public static Response buildEchoResponse(Request request) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<html><body><table border=\\“1\\“><tr><th>Field</th><th>Value</th></tr>");
+        for (Map.Entry<String, String> entry : request.getUrl().getHeaderFields().entrySet())
+            builder.append("<tr><td>" + entry.getKey() + "</td><td>" + entry.getValue() + "</td></tr>");
+        builder.append("</table></body></html>");
+        System.out.println(builder.toString());
+        return HTTPBuilder.completeResponseHeader(
+                request,
+                new Response(null,
+                        EnumContentType.TEXT_HTML.value,
+                        builder.toString(),
+                        null,
+                        EnumStatusCode.SUCCESS.code,
+                        builder.toString().getBytes())
+        );
+    }
 
     public static byte[] buildBytesResponse(Response response) {
         StringBuilder builder = new StringBuilder(response.getUrl().getProtocol() + " "

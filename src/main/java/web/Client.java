@@ -2,6 +2,7 @@ package web;
 
 import model.Request;
 import model.Response;
+import model.enums.EnumHeaderFields;
 import model.enums.EnumStatusCode;
 
 import java.io.*;
@@ -41,7 +42,7 @@ public class Client implements Runnable {
             }
 
             // Printing and parsing the request
-            System.out.println("REQUEST :");
+            System.out.println("NEW REQUEST :");
             System.out.println(builder.toString());
             Request request = HTTPBuilder.parseStringRequest(builder.toString(), clientSocket.getLocalSocketAddress());
             if (request != null) {
@@ -49,12 +50,15 @@ public class Client implements Runnable {
 
                 // Preparing the response
                 if (request.isValid()) response = requestDispatcher.dispatchRequest(request);
-                else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
+                else {
+                    if (request.getUrl() != null && request.getUrl().getPath().equals("/echo")) {
+                        response = HTTPBuilder.buildEchoResponse(request);
+                        response = HTTPBuilder.completeResponseHeader(request, response);
+                    } else response = HTTPBuilder.buildErrorResponse(request, EnumStatusCode.SERVER_ERROR);
+                }
 
                 // Printing and sending the response
                 byte[] byteResponse = HTTPBuilder.buildBytesResponse(response);
-                //System.out.println("\n\nRESPONSE :");
-                //System.out.println(byteResponse + "\n\n");
                 out.write(byteResponse);
                 out.flush();
             }
